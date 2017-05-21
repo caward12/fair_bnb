@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :message do
+    body "MyText"
+    user nil
+  end
   # factory :identity do
   #   user nil
   # end

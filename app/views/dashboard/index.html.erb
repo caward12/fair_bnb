@@ -31,7 +31,7 @@
           <h2>NOTIFICATIONS</h2>
         </div>
         <div class="panel-body">
-          YOU HAVE (x) new messages (LINK TO MESSAGE INDEX)<br>
+          You have <%= link_to "#{Message.all.count} messages", messages_path %><br>
           YOU HAVE (x) pending requests (LINK TO personal reservations, my properties' reservations)
         </div>
       </div>
