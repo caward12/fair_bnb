@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   get  '/dashboard', to: 'dashboard#index'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:edit, :update, :show]
+  resources :users, only: [:edit, :update, :show] do
+    resources :reservations, only: [:new, :index]
+  end
 
   resources :properties,  only: [:index, :show]
-
-  resources :reservations, only: [:new]
-
 end
