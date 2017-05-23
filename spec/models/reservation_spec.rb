@@ -17,6 +17,7 @@ RSpec.describe Reservation, type: :model do
     it { should belong_to :renter }
   end
 
+  describe "validations" do
     it "is invalid without total_price" do
       reservation = build(:reservation, total_price: nil, renter: @user, property: @property)
       expect(reservation).to_not be_valid
@@ -45,5 +46,30 @@ RSpec.describe Reservation, type: :model do
       reservation = build(:reservation, property: nil, renter: @user)
       expect(reservation).to_not be_valid
     end
+  end
 
+  describe "model methods" do
+    before :each do
+      @reservation = create(:reservation)
+      @reservation2 = create(:reservation, number_of_guests: 2)
+      @property = @reservation.property
+    end
+    it "returns reservation's property's city" do
+      expect(@reservation.city).to eq(@property.city)
+    end
+    it "returns formatted check in and check out dates" do
+      expect(@reservation.check_in_date).to eq("May 16, 2017")
+      expect(@reservation.check_out_date).to eq("May 17, 2017")
+    end
+    it "returns pluralized guests" do
+      expect(@reservation.guests).to eq("1 guest")
+      expect(@reservation2.guests).to eq("2 guests")
+    end
+    it "returns reservation's property's name" do
+      expect(@reservation.title).to eq(@property.name)
+    end
+    it "returns reservation's property's image" do
+      expect(@reservation.image_url).to eq(@property.image_url)
+    end
+  end
 end
