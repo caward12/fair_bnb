@@ -30,4 +30,29 @@ class Reservation < ApplicationRecord
     property.image_url
   end
 
+  def renter_name
+    renter.full_name
+  end
+
+  def host
+    property.owner
+  end
+
+  def host_name
+    host.full_name
+  end
+
+  def print_status
+    return status.capitalize unless status == 'in_progress'
+    "In Progress"
+  end
+
+  def format_total_price
+    "$#{total_price.to_f.round(2)}"
+  end
+
+  def nights
+    pluralize((end_date - start_date).to_i, 'night')
+  end
+
 end

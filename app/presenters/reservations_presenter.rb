@@ -1,4 +1,4 @@
-class ReservationPresenter
+class ReservationsPresenter
 
   def initialize(user)
     @user = user

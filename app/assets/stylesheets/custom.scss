@@ -2,6 +2,18 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+.denied {
+  color: red;
+}
+
+.in_progress {
+  color: blue;
+}
+
+.confirmed {
+  color: green;
+}
+
 .show_cropping {
   height: 450px;
   background: url(paris_street.png);

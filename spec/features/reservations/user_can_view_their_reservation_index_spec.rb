@@ -38,7 +38,7 @@ feature "user reservation index page" do
       login(user)
       visit user_reservations_path
 
-      save_and_open_page
+
 
       %w(pending confirmed in_progress finished declined).each do |status|
         within(".#{status}") do
