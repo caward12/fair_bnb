@@ -28,6 +28,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
+gem 'geocoder'
 
 group :development, :test do
   gem 'byebug', platform: :mri

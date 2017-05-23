@@ -91,4 +91,18 @@ RSpec.describe Property, type: :model do
       property = build(:property, room_type: nil, owner: @owner)
       expect(property).to_not be_valid
     end
+
+  context ".create_properties" do
+    it "returns collection of airbnb properties" do
+      allow_any_instance_of(AirBnbService)
+      .to receive(:create_properties)
+      .and_return(stub_properties)
+
+      properties = Property.create_properties
+
+      expect(properties.count).to eq(1)
+      expect(properties.first).to be_a(Property)
+      expect(properties.first.name).to eq("1880s Carriage House in Curtis Park")
+    end
+  end
 end

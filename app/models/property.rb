@@ -10,6 +10,8 @@ class Property < ApplicationRecord
 
   enum status: %w(pending active archived)
 
+  # before_save :find_address
+
   def format_check_in_time
     DateTime.parse(check_in_time).strftime("%l:%M%P")
   end
@@ -44,5 +46,27 @@ class Property < ApplicationRecord
 
   def self.search_guests(guests)
     where("number_of_guests >= ?", guests)
+  end
+
+  def self.create_properties
+    AirBnbService.create_properties.map do |raw_prop|
+      byebug
+      property = Property.new(name: raw_prop[:name],
+                              number_of_guests: raw_prop[:name],
+                              number_of_beds: raw_prop[:beds],
+                              number_of_rooms: raw_prop[:bedrooms],
+                              number_of_bathrooms: raw_prop[:bathrooms],
+                              price_per_night: raw_prop[:localized_nightly_price],
+                              lat: raw_prop[:lat],
+                              long: raw_prop[:lng],
+                              image_url: raw_prop[:picture_url]
+                              )
+      property.save
+    end
+  end
+
+  def find_address
+    address_params = reverse_geocoded_by :lat, :long
+    update(address_params)
   end
 end
