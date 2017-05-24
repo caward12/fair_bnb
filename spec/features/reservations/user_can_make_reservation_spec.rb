@@ -60,12 +60,47 @@ feature "request to book" do
       end
 
     end
-    xscenario "user booking edge cases" do
-      # cannot book with check-in-date same as check-out-date
-      # cannot book with check-out-date before check-in-date
-      # must book with check-in, check-out, and guests in form (make required?)
+    scenario "user tries booking with same check in and check out date" do
+      login(user)
+      visit property_path(property)
+      fill_in :check_in_date, with: check_in_date
+      fill_in :check_out_date, with: check_in_date
+      fill_in :guests, with: 1
+      click_on "Request to Book"
+
+      expect(current_path).to eq(property_path(property))
+      within ".alert" do
+        expect(page).to have_content("Check in date cannot be the same as check out date.")
+      end
+      expect(user.reservations.count).to eq(0)
     end
-    xscenario "pending booking shows up in user's reservations" do
+    scenario "user tries booking with non sequential check in and check out dates" do
+      login(user)
+      visit property_path(property)
+      fill_in :check_in_date, with: check_out_date
+      fill_in :check_out_date, with: check_in_date
+      fill_in :guests, with: 1
+      click_on "Request to Book"
+
+      expect(current_path).to eq(property_path(property))
+      within ".alert" do
+        expect(page).to have_content("Reservation check in and out dates are not sequential.")
+      end
+      expect(user.reservations.count).to eq(0)
+    end
+    scenario "user does not enter check in and check out dates" do
+      login(user)
+      visit property_path(property)
+      fill_in :guests, with: 1
+      click_on "Request to Book"
+
+      expect(current_path).to eq(property_path(property))
+      within ".alert" do
+        expect(page).to have_content("Please fill out valid check in and check out dates.")
+      end
+      expect(user.reservations.count).to eq(0)
+    end
+    scenario "pending booking shows up in user's reservations" do
       login(user)
       expect(user.reservations.count).to eq(0)
 
@@ -76,17 +111,17 @@ feature "request to book" do
 
       expect(user.reservations.count).to eq(1)
 
-      within(".#{pending}") do
+      within(".pending") do
         expect(page).to have_selector('.reservation', count: 1)
         expect(page).to have_css("img[src*='#{property.image_url}']")
         expect(page).to have_link(property.city)
-        expect(page).to have_content(property.title)
-        expect(page).to have_content(check_in_date)
-        expect(page).to have_content(check_out_date)
+        expect(page).to have_content(property.name)
+        expect(page).to have_content(check_in_format)
+        expect(page).to have_content(check_out_format)
         expect(page).to have_content("1 guest")
       end
     end
-    xscenario "cannot book a place if unavailable" do
+    scenario "cannot book a place if unavailable" do
       property2 = create(:property_with_reservations)
       check_in_date2 = property2.property_availabilities.first.date.strftime("%Y-%m-%d")
       check_out_date2 = property2.property_availabilities.last.date.strftime("%Y-%m-%d")
@@ -100,11 +135,9 @@ feature "request to book" do
       click_on "Request to Book"
 
       expect(current_path).to eq(property_path(property))
-
       within ".alert" do
         expect(page).to have_content("Property is unavailable for those dates! Try searching again with your check-in dates above.")
       end
-
       expect(user.reservations.count).to eq(0)
     end
   end
