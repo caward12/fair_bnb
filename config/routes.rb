@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users,
+    :controllers => {
+      omniauth_callbacks: "users/omniauth_callbacks",
+      sessions: 'users/sessions',
+      registrations: 'users/registrations'
+    }
   get '/sign_up', to: 'signup#index'
   get '/log_in', to: 'login#index'
   get  '/dashboard', to: 'dashboard#index'

@@ -26,6 +26,7 @@ FactoryGirl.define do
 
   factory :property_availability do
     sequence :date do |n|
+      n = n-10 if n > 31
       "2017-07-#{n}"
     end
     reserved? false

@@ -2,8 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   def check_user_sign_in
-    if !user_signed_in?
+    if (params[:controller] == "user/reservations") && (params[:action] == "new") && !user_signed_in?
+      flash[:alert] = "Please log in or sign up to continue with your booking!"
+      redirect_to log_in_path
+    elsif !user_signed_in?
       redirect_page_not_found
     end
   end

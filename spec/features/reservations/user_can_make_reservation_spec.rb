@@ -18,16 +18,18 @@ feature "request to book" do
     @total_price = @property.price_per_night * 2.0
   end
   context "as a guest user" do
-    xscenario "prompted to login when attempting to book" do
+    scenario "prompted to login when attempting to book" do
       visit property_path(property)
+
       make_reservation
 
+      expect(page.status_code).to eq(200)
       expect(current_path).to eq(log_in_path)
       within ".alert" do
         "Please log in or sign up to continue with your booking!"
       end
     end
-    xscenario "once logged in, i am redirected back to the reservation booking page" do
+    scenario "once logged in, i am redirected back to the reservation booking page" do
       visit property_path(property)
       make_reservation
 
@@ -123,8 +125,9 @@ feature "request to book" do
     end
     scenario "cannot book a place if unavailable" do
       property2 = create(:property_with_reservations)
-      check_in_date2 = property2.property_availabilities.first.date.strftime("%Y-%m-%d")
-      check_out_date2 = property2.property_availabilities.last.date.strftime("%Y-%m-%d")
+      check_in_date2 = property2.property_availabilities.first.date
+      check_out_date2 = (check_in_date2 + 1).strftime("%Y-%m-%d")
+      check_in_date2 = check_in_date2.strftime("%Y-%m-%d")
 
       login(user)
       visit property_path(property2)
