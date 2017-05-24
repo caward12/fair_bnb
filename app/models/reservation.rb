@@ -60,4 +60,19 @@ class Reservation < ApplicationRecord
     return r if (r.host.id == user_id) || (r.renter.id == user_id)
   end
 
+  def self.generate_booking(attrs = {}, user_id)
+    start_date = attrs[:check_in_date].to_date
+    end_date = attrs[:check_out_date].to_date
+    price_per_night = Property.find(attrs[:property_id]).price_per_night
+    total_price = (end_date - start_date).to_i * price_per_night
+    new(
+      total_price: total_price,
+      start_date: start_date,
+      end_date: end_date,
+      number_of_guests: attrs[:guests].to_i,
+      property_id: attrs[:property_id],
+      renter_id: user_id
+    )
+  end
+
 end

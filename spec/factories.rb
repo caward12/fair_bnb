@@ -25,9 +25,14 @@ FactoryGirl.define do
   end
 
   factory :property_availability do
-    date "2017-05-16"
-    reserved? true
+    sequence :date do |n|
+      "2017-07-#{n}"
+    end
+    reserved? false
     property
+    factory :property_with_reservations do
+      reserved? true
+    end
   end
 
   factory :reservation do
@@ -92,6 +97,9 @@ end
     check_out_time "11:00:00"
     status 1
     association :owner, factory: :user
+    factory :property_with_availability do
+      property_availabilities {create_list(:property_availability, 3)}
+    end
   end
 
 

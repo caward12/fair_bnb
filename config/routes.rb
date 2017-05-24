@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :properties, only: [:index]
-    resources :reservations, only: [:new, :index, :show]
+    resources :reservations, only: [:new, :create, :index, :show]
   end
 end

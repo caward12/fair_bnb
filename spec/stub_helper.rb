@@ -39,5 +39,11 @@ def stub_google
       expires: true
     }
   })
+end
 
+def make_reservation
+  fill_in :check_in_date, with: check_in_date
+  fill_in :check_out_date, with: check_out_date
+  fill_in :guests, with: 1
+  click_on "Request to Book"
 end
