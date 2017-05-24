@@ -127,14 +127,14 @@ feature "request to book" do
       check_out_date2 = property2.property_availabilities.last.date.strftime("%Y-%m-%d")
 
       login(user)
-      visit property_path(property)
+      visit property_path(property2)
 
       fill_in :check_in_date, with: check_in_date2
       fill_in :check_out_date, with: check_out_date2
       fill_in :guests, with: 1
       click_on "Request to Book"
 
-      expect(current_path).to eq(property_path(property))
+      expect(current_path).to eq(property_path(property2))
       within ".alert" do
         expect(page).to have_content("Property is unavailable for those dates! Try searching again with your check-in dates above.")
       end

@@ -80,17 +80,31 @@ class Reservation < ApplicationRecord
       return false, "Reservation check in and out dates are not sequential.", {}
     else
       property_id = attrs[:property_id]
-      price_per_night = Property.find(property_id).price_per_night
-      total_price = (end_date - start_date).to_i * price_per_night
+      span = (end_date - start_date).to_i
+      check_availability(start_date, end_date, property_id, span, attrs, user_id)
+    end
+  end
+
+  def self.check_availability(start_date, end_date, id, span, attrs, user_id)
+    availabilities = Property.find(id)
+            .property_availabilities
+            .merge(PropertyAvailability.available)
+            .where('date >= ? AND date <= ?', start_date, end_date)
+            .count
+    if span == (availabilities - 1)
+      price_per_night = Property.find(id).price_per_night
+      total_price = span * price_per_night
       params = {
         total_price: total_price,
         start_date: start_date,
         end_date: end_date,
         number_of_guests: attrs[:guests].to_i,
-        property_id: property_id,
+        property_id: id,
         renter_id: user_id
       }
       return true, "", params
+    else
+      return false, "Property is unavailable for those dates! Try searching again with your check-in dates above.", {}
     end
   end
 

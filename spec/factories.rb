@@ -30,7 +30,7 @@ FactoryGirl.define do
     end
     reserved? false
     property
-    factory :property_with_reservations do
+    factory :property_unavailability do
       reserved? true
     end
   end
@@ -99,6 +99,9 @@ end
     association :owner, factory: :user
     factory :property_with_availability do
       property_availabilities {create_list(:property_availability, 3)}
+    end
+    factory :property_with_reservations do
+      property_availabilities {create_list(:property_unavailability, 3)}
     end
   end
 
