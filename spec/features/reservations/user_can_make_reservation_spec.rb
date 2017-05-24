@@ -20,12 +20,7 @@ feature "request to book" do
   context "as a guest user" do
     xscenario "prompted to login when attempting to book" do
       visit property_path(property)
-
-      # make_reservation
-      fill_in :check_in_date, with: check_in_date
-      fill_in :check_out_date, with: check_out_date
-      fill_in :guests, with: 1
-      click_on "Request to Book"
+      make_reservation
 
       expect(current_path).to eq(log_in_path)
       within ".alert" do
@@ -34,12 +29,7 @@ feature "request to book" do
     end
     xscenario "once logged in, i am redirected back to the reservation booking page" do
       visit property_path(property)
-
-      # make_reservation
-      fill_in :check_in_date, with: check_in_date
-      fill_in :check_out_date, with: check_out_date
-      fill_in :guests, with: 1
-      click_on "Request to Book"
+      make_reservation
 
       login(user)
 
@@ -49,17 +39,10 @@ feature "request to book" do
   context "as a logged in user" do
     scenario "directed to booking page" do
       login(user)
-
       visit property_path(property)
-
-      # make_reservation
-      fill_in :check_in_date, with: check_in_date
-      fill_in :check_out_date, with: check_out_date
-      fill_in :guests, with: 1
-      click_on "Request to Book"
+      make_reservation
 
       expect(current_path).to eq(new_user_reservation_path)
-
       expect(page).to have_content("Complete your Reservation")
       expect(page).to have_css("img[src*='#{property.image_url}']")
       expect(page).to have_content("Total Cost: $#{total_price.round(2)}")
@@ -71,7 +54,7 @@ feature "request to book" do
       click_on "Complete Booking"
 
       expect(current_path).to eq(user_reservation_path(Reservation.last))
-      
+
       within ".alert" do
         expect(page).to have_content("Reservation request successful and awaiting approval from host.")
       end
@@ -87,11 +70,7 @@ feature "request to book" do
       expect(user.reservations.count).to eq(0)
 
       visit property_path(property)
-      # make_reservation
-      fill_in :check_in_date, with: check_in_date
-      fill_in :check_out_date, with: check_out_date
-      fill_in :guests, with: 1
-      click_on "Request to Book"
+      make_reservation
       click_on "Complete Booking"
       visit user_reservations_path
 
@@ -109,15 +88,14 @@ feature "request to book" do
     end
     xscenario "cannot book a place if unavailable" do
       property2 = create(:property_with_reservations)
-      check_in_date = property2.property_availabilities.first.date.strftime("%Y-%m-%d")
-      check_out_date = property2.property_availabilities.last.date.strftime("%Y-%m-%d")
+      check_in_date2 = property2.property_availabilities.first.date.strftime("%Y-%m-%d")
+      check_out_date2 = property2.property_availabilities.last.date.strftime("%Y-%m-%d")
 
       login(user)
       visit property_path(property)
 
-      # make_reservation
-      fill_in :check_in_date, with: check_in_date
-      fill_in :check_out_date, with: check_out_date
+      fill_in :check_in_date, with: check_in_date2
+      fill_in :check_out_date, with: check_out_date2
       fill_in :guests, with: 1
       click_on "Request to Book"
 
