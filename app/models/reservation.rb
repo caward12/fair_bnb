@@ -61,18 +61,37 @@ class Reservation < ApplicationRecord
   end
 
   def self.generate_booking(attrs = {}, user_id)
-    start_date = attrs[:check_in_date].to_date
-    end_date = attrs[:check_out_date].to_date
-    price_per_night = Property.find(attrs[:property_id]).price_per_night
-    total_price = (end_date - start_date).to_i * price_per_night
-    new(
-      total_price: total_price,
-      start_date: start_date,
-      end_date: end_date,
-      number_of_guests: attrs[:guests].to_i,
-      property_id: attrs[:property_id],
-      renter_id: user_id
-    )
+    decider, msg, params = check_valid_booking_params(attrs, user_id)
+    if decider
+      new(params)
+    else
+      msg
+    end
+  end
+
+  def self.check_valid_booking_params(attrs, user_id)
+    start_date = attrs[:check_in_date].to_date rescue nil
+    end_date = attrs[:check_out_date].to_date rescue nil
+    if start_date.nil? || end_date.nil?
+      return false, "Please fill out valid check in and check out dates.", {}
+    elsif start_date == end_date
+      return false, "Check in date cannot be the same as check out date.", {}
+    elsif start_date > end_date
+      return false, "Reservation check in and out dates are not sequential.", {}
+    else
+      property_id = attrs[:property_id]
+      price_per_night = Property.find(property_id).price_per_night
+      total_price = (end_date - start_date).to_i * price_per_night
+      params = {
+        total_price: total_price,
+        start_date: start_date,
+        end_date: end_date,
+        number_of_guests: attrs[:guests].to_i,
+        property_id: property_id,
+        renter_id: user_id
+      }
+      return true, "", params
+    end
   end
 
 end
