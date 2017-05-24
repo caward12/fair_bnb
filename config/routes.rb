@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update, :show]
 
-  resource :user, only: [] do
+  namespace :user do
     resources :reservations, only: [:new, :index, :show]
   end
 

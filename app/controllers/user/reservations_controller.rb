@@ -1,4 +1,4 @@
-class ReservationsController < ApplicationController
+class User::ReservationsController < ApplicationController
   before_action :check_user_sign_in
 
   def index
