@@ -51,7 +51,7 @@ RSpec.describe Reservation, type: :model do
   describe "model methods" do
     before :each do
       @reservation = create(:reservation)
-      @reservation2 = create(:reservation, number_of_guests: 2)
+      @reservation2 = create(:reservation, number_of_guests: 2, end_date: Date.new(2017, 5, 18))
       @property = @reservation.property
     end
     it "returns reservation's property's city" do
@@ -70,6 +70,40 @@ RSpec.describe Reservation, type: :model do
     end
     it "returns reservation's property's image" do
       expect(@reservation.image_url).to eq(@property.image_url)
+    end
+    it "returns reservation's renter's name" do
+      expect(@reservation.renter_name).to eq(@reservation.renter.full_name)
+    end
+    it "returns reservation's property's owner" do
+      expect(@reservation.host).to eq(@reservation.property.owner)
+      expect(@reservation.host_name).to eq(@reservation.property.owner.full_name)
+    end
+    it "returns humanized versions of reservation statuses" do
+      r0 = create(:reservation, status: 0)
+      r1 = create(:reservation, status: 1)
+      r2 = create(:reservation, status: 2)
+      r3 = create(:reservation, status: 3)
+      r4 = create(:reservation, status: 4)
+      expect(r0.print_status).to eq("Pending")
+      expect(r1.print_status).to eq("Confirmed")
+      expect(r2.print_status).to eq("In Progress")
+      expect(r3.print_status).to eq("Finished")
+      expect(r4.print_status).to eq("Declined")
+    end
+    it "returns pluralized nights" do
+      expect(@reservation.nights).to eq("1 night")
+      expect(@reservation2.nights).to eq("2 nights")
+    end
+    it "returns a reservation if user is owner or renter" do
+      id = @reservation.id
+      renter_id = @reservation.renter_id
+      owner_id = @reservation.host.id
+      renter_id2 = @reservation2.renter_id
+      owner_id2 = @reservation2.host.id
+      expect(Reservation.find_by_user(renter_id, id)).to eq(@reservation)
+      expect(Reservation.find_by_user(owner_id, id)).to eq(@reservation)
+      expect(Reservation.find_by_user(renter_id2, id)).to be_nil
+      expect(Reservation.find_by_user(owner_id2, id)).to be_nil
     end
   end
 end
