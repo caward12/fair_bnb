@@ -4,9 +4,13 @@ class ApplicationController < ActionController::Base
 
   def check_user_sign_in
     if !user_signed_in?
-      flash[:alert] = "Page not found!"
-      render :file => 'public/404.html', :status => :not_found
+      redirect_page_not_found
     end
+  end
+
+  def redirect_page_not_found
+    flash[:alert] = "Page not found!"
+    render :file => 'public/404.html', :status => :not_found
   end
 
   protected
