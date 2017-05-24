@@ -15,9 +15,11 @@ Rails.application.routes.draw do
     resources :properties, only: [:index, :edit, :update]
     resources :users, only: [:index]
   end
+  
+  resources :conversations, only: [:show, :index]
+  resources :messages, only: [:create]
 
   resources :users, only: [:edit, :update, :show]
-  resources :messages, only: [:index, :create]
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :reservations, only: [:new]
   

@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :properties, foreign_key: "owner_id"
   has_many :identities
   has_many :messages
+  has_many :conversations, through: :messages
 
   enum role: %w(registered_user admin)
 

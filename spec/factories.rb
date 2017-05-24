@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :conversation do
+    name "MyString"
+  end
   factory :message do
     body "MyText"
     user
