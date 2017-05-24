@@ -7,11 +7,20 @@ Rails.application.routes.draw do
   get  '/dashboard', to: 'dashboard#index'
   delete '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:edit, :update, :show]
-
-  namespace :user do
-    resources :reservations, only: [:new, :index, :show]
+  namespace :admin do
+    resources :dashboard, only: [:index]
+    resources :properties, only: [:index, :edit, :update]
+    resources :users, only: [:index]
   end
 
-  resources :properties,  only: [:index, :show]
+  resources :users, only: [:edit, :update, :show]
+
+  resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :reservations, only: [:new]
+
+  namespace :user do
+    resources :properties, only: [:index]
+    resources :reservations, only: [:new, :index, :show]
+  end
 end
