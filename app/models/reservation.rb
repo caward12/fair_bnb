@@ -55,4 +55,9 @@ class Reservation < ApplicationRecord
     pluralize((end_date - start_date).to_i, 'night')
   end
 
+  def self.find_by_user(user_id, id)
+    r = find(id)
+    return r if (r.host.id == user_id) || (r.renter.id == user_id)
+  end
+
 end
