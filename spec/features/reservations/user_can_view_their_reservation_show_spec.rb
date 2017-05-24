@@ -6,11 +6,13 @@ feature "reservation show page" do
     @renter1 = create(:user_with_reservations)
     @reservation = renter1.reservations.find_by(status: 0)
     @owner1 = @reservation.property.owner
+    @owner1.update(password: "password")
     @renter2 = create(:user_with_reservations)
     @owner2 = @renter2.reservations.first.property.owner
+    @owner2.update(password: "password")
   end
   scenario "guest cannot access a reservation show page" do
-    visit user_reservation_path(@renter1.reservations.first)
+    visit user_reservation_path(renter1.reservations.first)
 
     expect(page.status_code).to eq(404)
 
@@ -18,7 +20,7 @@ feature "reservation show page" do
       expect(page).to have_content("Page not found!")
     end
   end
-  xscenario "renter can navigate to a reservation show from index" do
+  scenario "renter can navigate to a reservation show from index" do
     login(renter1)
 
     click_link "My Reservations"
@@ -35,14 +37,6 @@ feature "reservation show page" do
       # click_link "My Properties"
       # click_link "Reservations"
       # expect(current_path).to eq(user_reservation_path(reservation))
-  end
-  xscenario "owner can access a reservation show" do
-    login(owner1)
-
-    visit user_reservation_path(reservation)
-
-    expect(current_path).to eq(user_reservation_path(reservation))
-    expect(page.status_code).to eq(200)
   end
   scenario "renter can access a reservation show" do
     login(renter1)
@@ -67,7 +61,15 @@ feature "reservation show page" do
 
     expect(current_path).to eq(property_path(reservation.property))
   end
-  xscenario "random renter cannot access another renter/owner's reservatin" do
+  scenario "owner can access a reservation show" do
+    login(owner1)
+
+    visit user_reservation_path(reservation)
+
+    expect(current_path).to eq(user_reservation_path(reservation))
+    expect(page.status_code).to eq(200)
+  end
+  scenario "random renter cannot access another renter/owner's reservatin" do
     login(renter2)
 
     visit user_reservation_path(reservation)
@@ -78,7 +80,7 @@ feature "reservation show page" do
       expect(page).to have_content("Page not found!")
     end
   end
-  xscenario "random renter cannot access another renter/owner's reservatin" do
+  scenario "random owner cannot access another renter/owner's reservatin" do
     login(owner2)
 
     visit user_reservation_path(reservation)
