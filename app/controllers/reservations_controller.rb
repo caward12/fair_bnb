@@ -6,7 +6,8 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    @reservation = current_user.reservations.find(params[:id])
+    @reservation = Reservation.find_by_user(current_user.id, params[:id])
+    redirect_page_not_found if @reservation.nil?
   end
 
 end
