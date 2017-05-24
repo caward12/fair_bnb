@@ -12,6 +12,10 @@ class User::ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.generate_booking(booking_params, current_user.id)
+    if @reservation.is_a?(String)
+      flash[:warning] = @reservation
+      redirect_to property_path(booking_params[:property_id])
+    end
   end
 
   def create
