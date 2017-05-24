@@ -3,9 +3,9 @@ require 'rails_helper'
 feature "User can sign up with facebook, google, and email" do
   let(:already_created_user) {create(:user)}
 
-  scenario "user can signup with same email for facebook and google" do
+  xscenario "user can signup with same email for facebook and google" do
     visit sign_up_path
-    click_on "Sign Up with Email"
+    click_on "Sign up with Email"
 
     expect(current_path).to eq(new_user_registration_path)
     fill_in :user_first_name, with: "Erin"
@@ -15,7 +15,7 @@ feature "User can sign up with facebook, google, and email" do
     fill_in :user_image_url, with: "https://fakeimage.jpg"
     fill_in :user_password, with: "password"
     fill_in :user_password_confirmation, with: "password"
-    click_on "Sign up"
+    click_on "Sign Up"
     click_on "Log Out"
 
     stub_facebook
@@ -29,7 +29,7 @@ feature "User can sign up with facebook, google, and email" do
     fill_in "Description", with: 'HEY!'
     fill_in "Hometown", with: 'STL'
 
-    click_on "Update Profile"
+    click_on "Submit Profile"
     click_on "Log Out"
 
     stub_google
