@@ -1,46 +1,47 @@
 
+<!DOCTYPE html>
 <html>
   <head>
-	   <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	     <link href="style.css" rel="stylesheet">
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
   </head>
+  <body>
+    <h3>just FUCKING WORK</h3>
 
-     <body class="map-body">
+    <div id="map"></div>
 
-	      <div id="map"></div>
+    <script>
+      function initMap() {
 
-        <script>
+        var latitude = <%= @properties[0].lat.to_json %>;
+        var longitude = <%= @properties[0].long.to_json %>;
+        console.log(latitude, longitude)
 
-          var map;
-          function initMap() {
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {
-                <% @properties.each do |property| %>
-                var lat = <%= property.lat.to_json %>;
-                var long = <%= property.long.to_json %>;
-                lat: lat,
-                lng:  long
+        var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(latitude, longitude)
+      });
 
-                var myLatLng = {lat, lng};
+        <% @properties.each do |property| %>
+          var lat = <%= property.lat.to_json %>;
+          var long = <%= property.long.to_json %>;
 
-                var marker = new google.maps.Marker({
-                  map: map,
-                  position: myLatLng,
-                  title: 'Hello World!'
-                });
-              }
+          var beths_awesome = {lat: lat, lng: long};
 
-                <% end %>
-              },
-          zoom: 8
-          });
-        }
-        </script>
+        var marker = new google.maps.Marker({
+          position: beths_awesome,
+          map: map,
+        });
+        <%end %>
+      }
+    </script>
 
-	      <script async defer
-        src="<%="https://www.google.com/maps/embed/v1/place?key=#{ENV['GOOGLE_MAP_KEY']}&q=#{property_attributes(@properties)}"%>" allowfullscreen>
-        </script>
-    </body>
+    <script async defer
+      src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_KEY']}&q=#{property_attributes(@properties)}&callback=initMap"%>">
+    </script>
+  </body>
 </html>
