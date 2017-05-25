@@ -39,9 +39,12 @@ Rails.application.routes.draw do
   
   resources :conversations, only: [:create, :show, :index]
   resources :messages, only: [:create]
-
   resources :users, only: [:edit, :update, :show]
-  resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
+
   resources :reservations, only: [:new]
   
   namespace :user do
