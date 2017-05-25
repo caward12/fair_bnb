@@ -1,10 +1,10 @@
 class ConversationsController < ApplicationController
   def create
-    if conversation = Conversation.find_by(name: "users-#{params[:user_1_id]}-#{params[:user_2_id]}")
-      redirect_to conversation_path(conversation, user_1_id: params[:user_1_id], user_2_id: params[:user_2_id])
+    if @conversation = Conversation.find_by(name: "users-#{params[:user_1_id]}-#{params[:user_2_id]}")
+      redirect_to conversation_path(@conversation, user_1_id: params[:user_1_id], user_2_id: params[:user_2_id])
     else
-      conversation = Conversation.create(name: "users-#{params[:user_1_id]}-#{params[:user_2_id]}")
-      redirect_to conversation_path(conversation)
+      @conversation = Conversation.create(name: "users-#{params[:user_1_id]}-#{params[:user_2_id]}")
+      redirect_to conversation_path(@conversation, user_1_id: params[:user_1_id], user_2_id: params[:user_2_id])
     end
   end
   
@@ -17,6 +17,6 @@ class ConversationsController < ApplicationController
   end
   
   def index
-    #code
+    @conversations = Conversation.find_by_user(current_user.id)
   end
 end

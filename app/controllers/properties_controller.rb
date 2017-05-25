@@ -2,6 +2,7 @@ class PropertiesController < ApplicationController
 
   def show
     @property = Property.find(params[:id])
+    @current_user = current_user
   end
 
   def index

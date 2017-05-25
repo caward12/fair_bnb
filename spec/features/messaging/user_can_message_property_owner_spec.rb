@@ -10,7 +10,7 @@ RSpec.feature "Registered user can message a property owner" do
     visit property_path(property)
     click_on "Message #{user2.first_name}"
     
-    expect(current_path).to eq(conversation_path(user, user2))
-    expect(page).to have_content
+    expect(current_path).to eq(conversation_path(Conversation.first))
+    expect(page).to have_content("Chat between")
   end
 end

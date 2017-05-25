@@ -2,9 +2,11 @@ FactoryGirl.define do
   factory :conversation do
     name "MyString"
   end
+  
   factory :message do
     body "MyText"
     user
+    conversation
   end
   # factory :identity do
   #   user nil
@@ -26,7 +28,6 @@ FactoryGirl.define do
     active? false
     password "password"
     facebook_token ENV['FACEBOOK_USER_TOKEN']
-
   end
 
   factory :property_availability do
