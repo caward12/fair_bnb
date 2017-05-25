@@ -17,6 +17,11 @@ class ConversationsController < ApplicationController
   end
   
   def index
-    @conversations = Conversation.find_by_user(current_user.id)
+    if current_user
+      @conversations = Conversation.find_by_user(current_user.id)
+    else
+      redirect_to root_path
+      flash[:danger] = "You must be a user to access messaging"
+    end
   end
 end

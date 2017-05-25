@@ -22,10 +22,12 @@ class Conversation < ApplicationRecord
   end
   
   def self.find_by_user(id)
+    convos = []
     all.map do |convo|
       if convo.parse_name[1] == id.to_s || convo.parse_name[2] == id.to_s
-        convo
+        convos << convo
       end
     end
+    convos
   end
 end

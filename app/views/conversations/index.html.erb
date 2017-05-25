@@ -1,10 +1,14 @@
 <h1>Your Messages</h1>
 
-<% @conversations.each do |convo| %>
-  <% if convo.first_user_id == current_user.id.to_s %>
-    <% other_user = User.find(convo.second_user_id) %>
-  <% else %>  
-    <% other_user = User.find(convo.first_user_id) %>
+<% unless @conversations.nil? || @conversations.empty?  %>
+  <% @conversations.each do |convo| %>
+    <% if convo.first_user_id == current_user.id.to_s %>
+      <% other_user = User.find(convo.second_user_id) %>
+    <% else %>  
+      <% other_user = User.find(convo.first_user_id) %>
+    <% end %>
+    <h4> <%= link_to "Conversation with #{other_user.first_name} #{other_user.last_name}", conversation_path(convo, user_1_id: convo.first_user_id, user_2_id: convo.second_user_id) %> </h4>
   <% end %>
-  <h4> <%= link_to "Conversation with #{other_user.first_name} #{other_user.last_name}", conversation_path(convo, user_1_id: convo.first_user_id, user_2_id: convo.second_user_id) %> </h4>
+  <% else %>
+  <h3>You haven't started any conversations yet!</h3>
 <% end %>

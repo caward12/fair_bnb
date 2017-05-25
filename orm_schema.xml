@@ -37,7 +37,7 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="206" y="47" name="properties">
+</datatypes><table x="279" y="68" name="properties">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -101,7 +101,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="983" y="284" name="users">
+<table x="913" y="33" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -178,7 +178,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="686" y="76" name="reservations">
+<table x="457" y="8" name="reservations">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -209,7 +209,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="23" y="63" name="room_types">
+<table x="49" y="354" name="room_types">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -220,7 +220,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="375" y="224" name="property_availabilities">
+<table x="29" y="62" name="property_availabilities">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -234,6 +234,36 @@
 <row name="reserved?" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="741" y="211" name="messages">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="body" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="conversation_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="conversations" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="554" y="417" name="conversations">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>user_id_user_id</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

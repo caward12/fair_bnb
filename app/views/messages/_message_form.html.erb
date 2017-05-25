@@ -9,6 +9,6 @@
   <%= f.label :your_message %>:
   <%= f.text_area :body, class: "form-control", data: {textarea: "message"} %>
 
-  <%= f.hidden_field :conversation_id, value: @conversation.id %>
+  <%= f.hidden_field :conversation_id, value: @conversation.id %> </br>
   <%= f.submit "send", class: "btn btn-custom", data: {send: "message"} %>
 <% end %>
