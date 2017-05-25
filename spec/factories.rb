@@ -88,7 +88,7 @@ end
     sequence :city do |n|
       Faker::Address.city + " #{n}"
     end
-    state Faker::Address.state
+    state Faker::Address.state_abbr
     zip Faker::Address.zip
     lat "39.7392"
     long "104.9903"
