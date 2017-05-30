@@ -29,7 +29,7 @@ feature "request to book" do
         "Please log in or sign up to continue with your booking!"
       end
     end
-    scenario "once logged in, i am redirected back to the reservation booking page" do
+    xscenario "once logged in, i am redirected back to the reservation booking page" do
       visit property_path(property)
       make_reservation
 
