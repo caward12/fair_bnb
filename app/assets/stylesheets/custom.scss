@@ -2,6 +2,21 @@
 @import "bootstrap";
 @import 'bootstrap/theme';
 
+.denied {
+  color: red;
+}
+
+.in_progress {
+  color: blue;
+}
+
+.confirmed {
+  color: green;
+}
+
+.user_nav {
+  display: flex;
+}
 // .nav {
 //   display: flex;
 //   text-align: center;
@@ -30,7 +45,7 @@
 .navbar-nav > li > a {
   text-shadow: none;
   color: #b7b7b7;
-  padding-bottom: 11px !important; 
+  padding-bottom: 11px !important;
 }
 
 .navbar-nav > li > a:hover {
@@ -56,7 +71,7 @@
 
 .img-circle {
   width: 45px;
-  border: 3px solid #b7b7b7 
+  border: 3px solid #b7b7b7
 }
 
 .dropdown-menu>li>a:hover {
@@ -88,14 +103,14 @@
 
 .jumbotron {
   background-color:transparent !important;
-  font-family: 'Khula', sans-serif !important; 
+  font-family: 'Khula', sans-serif !important;
 }
   .title {
     color: #ff5a5f !important;
     font-size: 55px;
     font-weight: bold;
   }
-  
+
   .subtitle {
     font-size: 50px;
   }
@@ -123,7 +138,7 @@ input#guests {
 input, select, option {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;  
+  box-sizing: border-box;
 }
 input, select {
   width: 200px;
