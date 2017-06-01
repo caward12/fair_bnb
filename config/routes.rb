@@ -57,7 +57,11 @@ Rails.application.routes.draw do
   resources :reservations, only: [:new]
 
   namespace :user do
-    resources :properties, only: [:index]
+
+    resources :properties, only: [:index] do
+      resources :reservations, only: [:index, :update], controller: 'properties/reservations'
+    end
+
     resources :reservations, only: [:new, :create, :index, :show]
   end
 end
