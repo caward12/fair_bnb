@@ -36,14 +36,9 @@ describe 'highest revenue cities endpoint' do
       max_cities = city_revenues.find_all {|c_r| c_r[1] == city_revenues.first.last}
       max_cities = max_cities.map {|c_r| c_r.first}
 
-      low_cities = city_revenues.find_all {|c_r| c_r[1] == city_revenues.last.last}
-      low_cities = low_cities.map {|c_r| c_r.first}
-
       expect(cities).to be_an(Array)
       expect(cities.count).to eq(limit)
       expect(max_cities.include?(cities.first)).to be true
-      expect(low_cities.include?(cities.last)).to be true
-      expect(city_revenues.first.last).to be > (city_revenues.last.last)
     end
   end
   # context "when user adds a month params" do

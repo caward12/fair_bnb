@@ -1,0 +1,10 @@
+<h2>Reservations for <%= @reservations.first.property.name %></h2><br>
+<% @reservations.each do |r| %>
+  Check in: <%= r.start_date %> <br>
+  Check out: <%= r.end_date %> <br>
+  Number of Guests: <%= r.number_of_guests %> <br>
+  Renter: <%= link_to r.renter.full_name, user_path(r.renter) %> <br>
+  Current status: <%= r.status %> <br>
+  <%= link_to "Approve", user_property_reservation_path(r.property, r, status: "approve"), method: :put, class: "btn btn-primary" %>
+  <%= link_to "Decline", user_property_reservation_path(r.property, r, status: "decline"), method: :put, class: "btn btn-danger" %> <br><br>
+<% end %>

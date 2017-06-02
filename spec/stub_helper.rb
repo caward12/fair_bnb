@@ -41,6 +41,13 @@ def stub_google
   })
 end
 
+def make_reservation
+  fill_in :check_in_date, with: check_in_date
+  fill_in :check_out_date, with: check_out_date
+  fill_in :guests, with: 1
+  click_on "Request to Book"
+end
+
 def per_month_rev(mon)
   "$#{(9.99*mon).round(2)}"
 end
