@@ -62,6 +62,6 @@ Rails.application.routes.draw do
       resources :reservations, only: [:index, :update], controller: 'properties/reservations'
     end
 
-    resources :reservations, only: [:new, :create, :index, :show]
+    resources :reservations, only: [:new, :create, :update, :index, :show]
   end
 end

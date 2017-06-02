@@ -21,4 +21,16 @@ class PropertyAvailability < ApplicationRecord
       PropertyAvailability.create(date: date)
     end
   end
+
+  def self.make_unavailable(check_in, check_out)
+    build_avaialability_range(check_in, check_out).map do |date|
+      find_by(date: date).update(reserved?: true)
+    end
+  end
+
+  def self.make_available(check_in, check_out)
+    build_avaialability_range(check_in, check_out).map do |date|
+      find_by(date: date).update(reserved?: false)
+    end
+  end
 end

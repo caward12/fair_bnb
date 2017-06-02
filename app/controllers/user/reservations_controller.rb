@@ -26,6 +26,17 @@ class User::ReservationsController < ApplicationController
     end
   end
 
+  def update
+    reservation = Reservation.find(params[:id])
+    property = reservation.property
+    if params[:status] == "declined"
+      reservation.update(status: "declined")
+      property.property_availabilities.make_available((reservation.check_in_date).to_date, (reservation.check_out_date).to_date)
+      flash[:success] = "Reservation was successfully canceled."
+      redirect_to user_reservations_path
+    end
+  end
+
   private
     def booking_params
       params.permit(:check_in_date, :check_out_date, :guests, :property_id)
