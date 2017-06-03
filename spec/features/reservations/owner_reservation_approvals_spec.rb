@@ -23,7 +23,6 @@ feature "owner can approve reservation" do
 
       expect(current_path).to eq(user_property_reservations_path(property))
       expect(page).to have_content("Current status: confirmed")
-      # expect(reservation.status).to eq("confirmed")
 
     end
 
@@ -47,9 +46,8 @@ feature "owner can approve reservation" do
       click_on "Decline"
 
       expect(current_path).to eq(user_property_reservations_path(property))
-      expect(page).to have_content("Current status: declined")
-      # expect(reservation.status).to eq("declined")
 
+      expect(page).to have_content("Current status: declined")
     end
 
     scenario "I can approve reservation and it updates property availability" do
@@ -81,6 +79,4 @@ feature "owner can approve reservation" do
   end
 end
 
-# xscenario "once a reservation is booked the property is no longer available for those days" do
-#
-# end
+

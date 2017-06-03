@@ -9,8 +9,8 @@ RSpec.feature "as a guest, when i visit a property's detail page" do
 
       within first(".weather") do
         expect(page).to have_content("Current weather")
-        expect(page).to have_content("Conditions: Clear")
-        expect(page).to have_content("Temp: 60.4 F (15.8 C)")
+        expect(page).to have_content("Conditions: Overcast")
+        expect(page).to have_content("Temp: 57.9 F (14.4 C)")
         expect(page).to have_content("Wind: Calm")
       end
     end
