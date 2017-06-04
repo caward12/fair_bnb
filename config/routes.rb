@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   get '/log_in', to: 'login#index'
   get  '/dashboard', to: 'dashboard#index'
   delete '/logout', to: 'sessions#destroy'
-
+  get '/analytics', to: 'analytics#index'
+  get '/analytics/data', :defaults => { :format => 'json' }
   resources :users, only: [:edit, :update]
 
   namespace :admin do
