@@ -9,6 +9,7 @@ class Property < ApplicationRecord
 
   has_many :reservations
   has_many :property_availabilities
+  has_many :reviews
 
   enum status: %w(pending active archived)
   # geocoded_by :full_address,  :latitude  => :lat, :longitude => :long
