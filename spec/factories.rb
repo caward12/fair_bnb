@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :review do
+    property
+    user
+    rating 1
+    comment "MyText"
+  end
   # factory :identity do
   #   user nil
   # end
