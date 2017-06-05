@@ -1,3 +1,4 @@
+<div class="col-md-8">
 <% unless @property.reviews.empty? %>
 <h2><%= @property.reviews.count %> Reviews</h2>
   <% @property.reviews.each do |review| %>
@@ -6,7 +7,6 @@
     <p><%= review.comment %></p>
   <% end %>
 <% end %>
-
 <%= form_for([@property, @review]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -37,3 +37,4 @@
     </div>
   </div>
 <% end %>
+</div>
