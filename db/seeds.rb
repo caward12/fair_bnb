@@ -5,11 +5,10 @@ class Seed
     generate_users
     generate_room_types
     generate_properties_for_users
-    generate_reservations_for_users
   end
 
   def generate_users
-    1000.times do |i|
+    500.times do |i|
       User.create!(
         email: Faker::Internet.email,
         first_name: Faker::Name.first_name,
@@ -48,8 +47,8 @@ class Seed
 
     CSV.foreach("db/sample_target_addresses.csv", {:headers => true, :header_converters => :symbol}) do |row|
       num = Random.new.rand(1..10)
-      user = User.find(Random.new.rand(1..1000))
-      user.properties.create!(
+      user = User.find(Random.new.rand(1..User.count))
+      property = user.properties.create!(
         name: Faker::Company.name,
         number_of_guests: (num * 2),
         number_of_beds: (num + 2),
@@ -70,17 +69,27 @@ class Seed
         check_out_time: "11:00:00"
         )
       puts "#{row} property created"
+      generate_property_availabilities(property)
     end
   end
 
-  def generate_reservations_for_users
-    500.times do |i|
+  def generate_property_availabilities(property)
+    i = 0
+    while i < 185 do
+      property.property_availabilities.create(date: (Date.today+i))
+      i += 1
+    end
+    puts "#{property.id} property availabilities created"
+    generate_reservations_for_users(property)
+  end
+
+  def generate_reservations_for_users(property)
+    10.times do |i|
       user = User.find(Random.new.rand(1..User.count))
-      property = Property.find(Random.new.rand(1..Property.count))
       length_of_stay = Random.new.rand(1..5)
       total = (property.price_per_night * length_of_stay)
-      begin_date = Faker::Date.forward(23)
-      user.reservations.create!(
+      begin_date = Faker::Date.between(Date.today, 170.days.from_now)
+      reservation = user.reservations.create!(
         total_price: total,
         start_date: begin_date,
         end_date: begin_date + Random.new.rand(1..10),
@@ -90,8 +99,14 @@ class Seed
         status: Random.new.rand(0..2)
         )
       puts "#{i} reservation created"
+      update_property_availability(property, reservation)
     end
   end
+
+  def update_property_availability(property, reservation)
+    property.property_availabilities.make_unavailable(reservation.start_date, reservation.end_date)
+  end
+
 end
 
 Seed.new
