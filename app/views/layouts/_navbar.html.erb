@@ -61,7 +61,7 @@ $(document).ready(function() {
                     </ul>
             </div>
           <% end %>
-          <li><%= link_to 'Profile', dashboard_path %></li>
+          <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'My Properties', user_properties_path %></li>
           <li><%= link_to 'My Reservations', user_reservations_path %></li>
           <li><%= link_to 'Messages', dashboard_path %></li>
