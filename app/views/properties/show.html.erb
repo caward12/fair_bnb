@@ -49,17 +49,18 @@
           <%= render partial: 'the_neighborhood' %>
         </div>
 
+        <div class="tab-pane" id="host" role="tabpanel">
+          <%= render partial: 'property_header' %>
+          <hr>
+          <h3>Hosted by <%= @property.owner.full_name %></h3>
+        </div>
+
         <div class="tab-pane" id="reviews" role="tabpanel">
           <%= render partial: 'property_header' %>
           <hr>
           <%= render partial: 'reviews' %>
         </div>
 
-        <div class="tab-pane" id="host" role="tabpanel">
-          <%= render partial: 'property_header' %>
-          <hr>
-          <h3>Hosted by <%= @property.owner.full_name %></h3>
-        </div>
       </div>
     </div>
   </div>
