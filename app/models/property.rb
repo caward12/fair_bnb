@@ -80,4 +80,10 @@ class Property < ApplicationRecord
     where("number_of_guests >= ?", guests)
   end
 
+  def average_rating
+    return 0 if reviews.blank?
+    reviews.sum(:rating) / reviews.size
+  end
+
+
 end
