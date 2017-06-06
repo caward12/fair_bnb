@@ -74,27 +74,3 @@
     </div><br>
   </div>
 </div> -->
-
-<script>
-  $(document).ready(function(){
-    $('.star-rating').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-            return $(this).attr('data-score');
-    }
-  });
-
-  $('#star-rating').raty({
-      path: '/assets',
-      scoreName: 'review[rating]'
-  });
-
-  $('#star').raty({
-  readOnly: true,
-  score: <%= @property.average_rating %>,
-  path: '/assets'
-});
-
-})
-</script>
