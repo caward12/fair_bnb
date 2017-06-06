@@ -1,27 +1,12 @@
+<script src="http://d3js.org/d3.v4.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+<h3>Number of Reservations by Month</h3>
 
-  <script src="http://d3js.org/d3.v4.min.js"></script>
-  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
-  <script type="text/javascript">
-    var svg = dimple.newSvg("body", 800, 600);
-    $.ajax({
-                  type: 'GET',
-                  contentType: 'application/json; charset=utf-8',
-                  url: '/api/v1/reservations/by_month',
-                  dataType: 'json',
-                  success: function(data){
-                    draw(data)
-                  },
-                  error: function(result){
-                    error();
-                  }
+<div id="monthContainer">
+  <script type="/assets/javascripts/reservations_month.js"></script>
+</div>
 
-                });
-
-  function draw(data){
-    var chart = new dimple.chart(svg, data);
-    chart.addCategoryAxis("x", "month");
-    chart.addMeasureAxis("y", "count");
-    chart.addSeries(null, dimple.plot.bar);
-    chart.draw();
-};
-  </script>
+<h3>Reservation Revenue by Month</h3>
+<div id="chartContainer">
+  <script type="/assets/javascripts/reservations_revenue.js"></script>
+</div>

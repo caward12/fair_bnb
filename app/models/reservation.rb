@@ -118,7 +118,7 @@ class Reservation < ApplicationRecord
     self.find_by_sql("SELECT to_char(start_date,'Month') AS month,  count(reservations) AS count
                       FROM reservations
                       GROUP BY to_char(start_date, 'Month')
-                      ORDER BY to_char(start_date, 'Month');")
+                      ORDER BY month;")
   end
 
   def self.reservations_by_month_city(city)
