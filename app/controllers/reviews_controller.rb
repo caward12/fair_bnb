@@ -5,10 +5,9 @@ class ReviewsController < ApplicationController
     @review = @property.reviews.new(review_params)
 
     respond_to do |format|
-      if @review.update(user_id: current_user.id)
+      if @review.save
         format.html { redirect_to property_path(@property), notice: 'Review was successfully created.' }
-        format.js   { }
-        format.json { render :show, status: :created, location: @review }
+        format.json { render json: @review.json_presenter, status: :created }
       else
         format.html { render :new }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -19,7 +18,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :comment)
+    params.require(:review).permit(:rating, :comment).merge(user_id: current_user.id)
   end
 
 end
