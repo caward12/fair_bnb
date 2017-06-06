@@ -58,9 +58,11 @@ $(document).ready(function() {
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                       <li> <%= link_to "Users", admin_users_path %></li>
                       <li> <%= link_to "Properties", admin_properties_path %></li>
+                      <li> <%= link_to "Analytics", admin_analytics_path %></li>
                     </ul>
             </div>
           <% end %>
+          <br>
           <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'My Properties', user_properties_path %></li>
           <li><%= link_to 'My Reservations', user_reservations_path %></li>
