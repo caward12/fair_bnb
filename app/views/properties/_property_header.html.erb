@@ -3,7 +3,7 @@
     <h2><%= @property.name %></h2>
     <p><%= "#{@property.city}, #{@property.state}" %></p>
     <% if @property.reviews %>
-      <h5 id="star">Average Rating: </h5>
+      <h5 class="star-rating" data-score="<%= @property.average_rating %>">Average Rating: </h5>
     <% end %>
     <p class="weather">
       <b>Current weather</b><br>
