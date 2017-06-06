@@ -3,11 +3,17 @@
 <% unless @property.reviews.empty? %>
 <h2><%= @property.reviews.count %> Reviews</h2>
   <% @property.reviews.each do |review| %>
-    <%= image_tag(review.user.image_url, height: '32', width: '32') %> <%= review.user.full_name %>
+    <%= image_tag(review.user.image_url, class: "review-picture") %> <%= review.user.full_name %>
     <div class="star-rating" data-score= <%= review.rating %> ></div>
     <p><%= review.comment %></p>
   <% end %>
 <% end %>
+
+<script id="review-template" type="x-tmpl-mustache">
+  <img src={{image}}, class="review-picture" >
+  <div class="star-rating" data-score="{{ rating }}"></div>
+  <p>Comment: {{ comment }}!</p>
+</script>
 
 <% if current_user %>
   <%= form_for [@property, @review], :remote => true do |f| %>
