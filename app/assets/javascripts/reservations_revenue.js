@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    var svg = dimple.newSvg("#chartContainer", 800, 600);
 
     $.ajax({
                 type: 'GET',
@@ -35,10 +35,14 @@ draw(new_data)
 
 function draw(data){
   var myChart = new dimple.chart(svg, data);
-     myChart.setBounds(60, 30, 505, 305);
+  myChart.defaultColors = [
+    new dimple.color("orange") // You can use #RGB here
+  ];
+     myChart.setBounds(60, 30, 705, 505);
      var x = myChart.addCategoryAxis("x", "month");
      x.addOrderRule("month");
      var y = myChart.addMeasureAxis("y", "revenue");
+     y.overrideMin = 100,000;
      var s = myChart.addSeries(null, dimple.plot.line);
      myChart.draw();
    };

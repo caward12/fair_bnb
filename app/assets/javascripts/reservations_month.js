@@ -34,10 +34,16 @@ function sort(data){
 
     function draw(data){
       var chart = new dimple.chart(svg, data);
+      chart.defaultColors = [
+        new dimple.color("teal") // You can use #RGB here
+      ];
       chart.addAxis("x", "month", null).addOrderRule("month");
       chart.addMeasureAxis("y", "count");
       chart.addSeries(null, dimple.plot.bar);
       chart.draw();
+
   };
+
+
 });
 

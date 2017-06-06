@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
+      get 'properties', to: 'properties#index'
       namespace :properties do
         get 'most_guests', to: 'most_guests#index'
         get 'most_expensive', to: 'most_expensive#index'
