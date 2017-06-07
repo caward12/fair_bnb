@@ -2,9 +2,9 @@
   <h2>Pending Properties</h2>
   <% @properties.where(status: :pending).each do |property| %>
   <div id="<%=property.name.parameterize%>-pending">
-    <p><%= property.name %></p>
+    <%= property.name %>
     <%= button_to "Activate", admin_property_path(property), method: :put, params: {status: :active} %>
-    <%= button_to "Delete", admin_property_path(property), method: :delete, params: {id: property.id } %>
+    <%= button_to "Delete", admin_property_path(property), method: :delete, params: {id: property.id }, class: "btn-xs btn-danger delete-button" %>
   </div>
   <% end %>
 
@@ -13,9 +13,16 @@
 <div class="all_properties">
   <h2>All Properties</h2>
   <% @properties.where.not(status: :pending).each do |property| %>
-  <div id="<%=property.name.parameterize%>">
-    <p><%= property.name %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= property.status %><br></p>
-    <%= button_to "Delete", admin_property_path(property), method: :delete %>
+  <div class="row property-row">
+    <div id="<%=property.name.parameterize%>">
+      <div class="col-md-2">
+        <%= property.name %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= property.status %>
+      </div>
+      <div class="col-md-2">
+        <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
+      </div>
+    </div>
   </div>
+
   <% end %>
 </div>
