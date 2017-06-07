@@ -8,7 +8,10 @@ RSpec.describe ChatterConversation do
       :id=>104,
       :first_message_date=>"2017-06-07T02:13:29.682Z",
       :last_message_date=>"2017-06-07T02:13:29.682Z",
-      :messages=>[]
+      :messages=>[{
+        body: 'Argle barf?',
+        author: 7
+        }]
     }
 
     @cc = ChatterConversation.new(chat_con_hash)
@@ -23,6 +26,7 @@ RSpec.describe ChatterConversation do
     it 'Should have a messages array' do
       expect(cc.messages).to be_an Array
       expect(cc.messages).to eq chat_con_hash[:messages]
+      expect(cc.messages.first).to be_a ChatterMessage
     end
 
     it 'Should have a first message date' do
@@ -50,6 +54,43 @@ RSpec.describe ChatterConversation do
 
       it 'Returns a conversation object' do
         expect(convo).to be_a ChatterConversation
+      end
+    end
+
+    describe '#post_message' do
+      attr_reader :params
+
+      before do
+        @params = {
+          conversation_id: 22,
+          author: 1,
+          body: 'YOLO'
+        }
+      end
+
+      it 'Adds a message to a conversation' do
+        VCR.use_cassette 'conversations/#post_message' do
+          convo = ChatterConversation.find(params[:conversation_id])
+
+          expect(convo.messages.last.body).to_not eq 'YOLO'
+
+          ChatterConversation.post_message(params)
+
+          convo = ChatterConversation.find(params[:conversation_id])
+
+          expect(convo.messages.last.body).to eq 'YOLO'
+        end
+      end
+
+      it 'Returns a message object' do
+        VCR.use_cassette 'conversations/#post_message_returns_Message' do
+          response = ChatterConversation.post_message(params)
+          user = User.find(params[:author])
+
+          expect(response).to be_a ChatterMessage
+          expect(response.body).to eq params[:body]
+          expect(response.author).to be user
+        end
       end
     end
   end
