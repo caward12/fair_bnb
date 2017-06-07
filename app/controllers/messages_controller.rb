@@ -5,8 +5,9 @@ class MessagesController < ApplicationController
     msg.merge!(author: current_user.id)
 
     response = ChatterConversation.post_message(msg)
+    message = ChatterMessage.new(response)
 
-    if message.save
+    if message
       ActionCable.server.broadcast 'messages',
         message: message.body,
         user: message.user.first_name

@@ -4,13 +4,16 @@ class User < ApplicationRecord
 
   has_many :reservations, foreign_key: "renter_id"
   has_many :properties, foreign_key: "owner_id"
-  has_many :messages
-  has_many :conversations, through: :messages
+  has_many :property_conversations
 
   enum role: %w(registered_user admin)
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def dialogues
+    properties.map(&:property_conversations).zip(property_conversations).flatten
   end
 
   def self.from_omniauth(auth_info)

@@ -17,7 +17,9 @@ class ConversationsController < ApplicationController
 
   def index
     if current_user
-      @conversations = Conversation.find_by_user(current_user.id)
+      @conversations = current_user.dialogues.map do |pc|
+        PropertyConversationPresenter.new(pc)
+      end
     else
       redirect_to root_path
       flash[:danger] = "You must be a user to access messaging"

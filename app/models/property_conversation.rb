@@ -11,7 +11,7 @@ class PropertyConversation < ApplicationRecord
     pc = self.find_by(user: user, property: property)
 
     unless pc
-      chatter = ChatterService.new_conversation
+      chatter = ChatterConversation.new
       pc = self.create(user: user, property: property, cid: chatter.id)
     end
 

@@ -9,6 +9,7 @@ class Property < ApplicationRecord
 
   has_many :reservations
   has_many :property_availabilities
+  has_many :property_conversations
 
   enum status: %w(pending active archived)
   # geocoded_by :full_address,  :latitude  => :lat, :longitude => :long
@@ -34,7 +35,7 @@ class Property < ApplicationRecord
   def format_check_in_time
     DateTime.parse(check_in_time).strftime("%l:%M%P")
   end
-  
+
   def format_check_out_time
     DateTime.parse(check_out_time).strftime("%l:%M%P")
   end
