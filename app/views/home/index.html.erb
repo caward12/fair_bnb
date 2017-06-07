@@ -48,9 +48,9 @@
             <!-- <h4 class="card-title"><%= property.name[0..28] %></h4> -->
             <p class="card-text"> <a href="<%= property_path(property.id) %>">  <%= property.name[0..28] %></a></p>
             <% if property.reviews %>
-              <h5 id="star">Average Rating: </h5>
+            <h5 class="star-rating" data-score="<%= property.average_rating %>">Average Rating: </h5>
             <% end %>
-x
+
             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
           </div>
         </div>&nbsp;&nbsp;&nbsp;&nbsp;
