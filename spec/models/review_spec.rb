@@ -32,4 +32,9 @@ RSpec.describe Review, type: :model do
     expect(review).to_not be_valid
   end
 
+  it "date method returns month and year" do
+    review = create(:review)
+
+    expect(review.date).to eq("June 2017")
+  end
 end
