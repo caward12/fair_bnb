@@ -12,9 +12,9 @@ RSpec.feature  "an admin visiting the admin properties path" do
 
     find('tr', text: property.name).click_button("Delete")
 
-    within(".all_properties") do
-      expect(page).to_not have_content("#{property.name}")
-    end
+
+    expect(page).to_not have_content("#{property.name}")
+
 
     expect(Property.count).to eq(0)
 
@@ -31,10 +31,9 @@ RSpec.feature  "an admin visiting the admin properties path" do
 
     find('tr', text: property.name).click_button("Delete")
 
-    within(".pending_properties") do
-      expect(page).to_not have_content("#{property.name}")
-    end
 
+    expect(page).to_not have_content("#{property.name}")
+    
     expect(Property.count).to eq(0)
 
 

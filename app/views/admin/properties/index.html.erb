@@ -1,37 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+       <table class="table table-striped">
+          <h2>Pending Properties</h2>
+          <tbody>
+        <% @properties.where(status: :pending).each do |property| %>
+            <tr>
+             <th>Name</th>
+             <th>Status</th>
+             <th></th>
+            </tr>
+              <tr>
+                <td>
+                  <%= property.name %>
+                </td>
+                <td>
+                  <%= property.status %>
+                </td>
+                <td>
+                  <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
+                </td>
+              </tr>
+        <% end %>
+          <tbody>
+        </table>
+      </div>
 
 
 
-
-
-<div class="pending_properties container admin-table-width">
-  <h2>Pending Properties</h2>
+<div class="col-md-6">
   <table class="table table-striped">
-    <tbody>
-  <% @properties.where(status: :pending).each do |property| %>
-      <tr>
-       <th>Name</th>
-       <th>Status</th>
-       <th></th>
-      </tr>
-        <tr>
-          <td>
-            <%= property.name %>
-          </td>
-          <td>
-            <%= property.status %>
-          </td>
-          <td>
-            <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
-          </td>
-        </tr>
-  <% end %>
-    <tbody>
-  <table>
-
-</div>
-<div class="all_properties container admin-table-width">
-  <h2>All Properties</h2>
-  <table class="table table-striped">
+      <h2>All Properties</h2>
     <tbody>
   <% @properties.where.not(status: :pending).each do |property| %>
           <tr>
@@ -52,5 +51,9 @@
             </tr>
   <% end %>
 
-         </tbody>
+      </tbody>
     </table>
+  </div>
+
+ </div>
+</div>
