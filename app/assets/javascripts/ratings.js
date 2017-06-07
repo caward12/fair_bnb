@@ -22,24 +22,27 @@ $("#new_review").submit(function() {
     url: $(this).attr('action'),
     dataType: "json",
     data: $(this).serialize() ,
-    success: function(response) {
-      document.getElementById('review_comment').value = '';
-      var list = document.querySelector('#star-rating').children
-      for (var i = 0; i < 5; i++) {
-        list[i].src = "/assets/star-off.png"
+      success: function(response) {
+        document.getElementById('review_comment').value = '';
+        var list = document.querySelector('#star-rating').children
+        for (var i = 0; i < 5; i++) {
+          list[i].src = "/assets/star-off.png"
+        }
+
+        // var num = document.querySelector('#reviews-count')
+        // num = +parseInt(num.textContent) + 1;
+
+        var reviewTemplate = $('#review-template').html();
+        var reviewHtml = Mustache.render(reviewTemplate, response);
+        $(".all-reviews").append(reviewHtml);
+
+        renderRaty();
+      },
+      error: function(response){
+        console.log(response);
       }
 
-      var reviewTemplate = $('#review-template').html();
-      var reviewHtml = Mustache.render(reviewTemplate, response);
-      $(".all-reviews").append(reviewHtml);
-
-      renderRaty();
-    },
-    error: function(response){
-      console.log(response);
-    }
-
+    });
+    return false;
   });
-  return false;
-});
 });
