@@ -1,0 +1,36 @@
+<div class="container">
+  <table class="table table-striped">
+      <tbody>
+        <tr>
+         <th>First Name</th>
+         <th>Last Name</th>
+         <th>E-Mail</th>
+         <th>Phone</th>
+         <th>Description</th>
+         <th></th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= user.first_name %>
+            </td>
+            <td>
+              <%= user.last_name %>
+            </td>
+            <td>
+              <%= user.email %>
+            </td>
+            <td>
+              <%= user.phone_number %>
+            </td>
+            <td>
+              <%= user.description %>
+            </td>
+            <td>
+              <%= button_to "Deactivate", admin_user_path(user, deactivate:''), class: "btn-xs btn-danger delete-button", method: :put%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
