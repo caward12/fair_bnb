@@ -15,13 +15,6 @@ $(document).ready(function(){
 
               });
 
-// function format(data){
-//   if(!(data instanceof Array)){
-//     data = [data];
-//  }
-//  draw(data)
-// };
-
 function format(data){
   var new_data = []
   for(var i in data) {

@@ -4,8 +4,9 @@ class Admin::AnalyticsController < ApplicationController
 
   end
 
-  def data
-
+  def update
+    @city = params["City"]
+    redirect_to admin_analytics_path
   end
 
 end

@@ -11,6 +11,14 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def property_count
+    properties.count
+  end
+
+  def property_revenue
+    properties.total_revenue
+  end
+
   def self.from_omniauth(auth_info)
     return from_google_omniauth(auth_info) if auth_info.provider == "google_oauth2"
     return from_fb_omniauth(auth_info) if auth_info.provider == "facebook"

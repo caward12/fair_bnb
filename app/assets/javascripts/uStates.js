@@ -35,29 +35,9 @@ $(document).ready(function(){
 		statesPropertyCount["AK"] = 0
 		statesPropertyCount["VT"] = 0
 		statesPropertyCount["DC"] = 0
-		// debugger
     setData(statesPropertyCount)
   };
-  //
-  // function group(data){
-  //   var groupBy = function(xs, state) {
-  //     return xs.reduce(function(rv, x) {
-  //       (rv[x["state"]] = rv[x["state"]] || []).push(x);
-  //       return rv;
-  //     }, {});
-  //   };
-  // };
 
-  	// var sampleData ={};	/* Sample random data. */
-  	// ["HI", "AK", "FL", "SC", "GA", "AL", "NC", "TN", "RI", "CT", "MA",
-  	// "ME", "NH", "VT", "NY", "NJ", "PA", "DE", "MD", "WV", "KY", "OH",
-  	// "MI", "WY", "MT", "ID", "WA", "DC", "TX", "CA", "AZ", "NV", "UT",
-  	// "CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
-  	// "WI", "MO", "AR", "OK", "KS", "LS", "VA"]
-  	// 	.forEach(function(d){
-  	// 		var low=Math.round(100*Math.random()),
-  	// 			mid=Math.round(100*Math.random()),
-  	// 			high=Math.round(100*Math.random());
     function setData(statesPropertyCount){
 			var data = {}
       for (var i in statesPropertyCount){

@@ -17,6 +17,7 @@ class Property < ApplicationRecord
     [address, city, state, zip].compact.join('+')
   end
 
+
   def two_digit_price
     '%.2f' % price_per_night.to_f
   end
@@ -77,6 +78,10 @@ class Property < ApplicationRecord
 
   def self.search_guests(guests)
     where("number_of_guests >= ?", guests)
+  end
+
+  def self.total_revenue
+    inject {|property, total| property.reservation}
   end
 
 end

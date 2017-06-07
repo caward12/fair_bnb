@@ -1,16 +1,39 @@
 <script src="http://d3js.org/d3.v4.min.js"></script>
 <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
 
+<h3>Cities with the Most Properties</h3>
+<div id="citiesPropertiesContainer">
+  <script type="/assets/javascripts/cities_properties.js"></script>
+</div>
+
+<h3>Most Expensive Properties Comparison</h3>
+<div id="propertyComparisonContainer">
+  <script type="/assets/javascripts/property_comparison.js"></script>
+</div>
+
 <h3>Number of Reservations by Month</h3>
 
 <div id="monthContainer">
   <script type="/assets/javascripts/reservations_month.js"></script>
 </div>
 
-<h3>Reservation Revenue by Month</h3>
+<h3>Reservation Revenue by Month (All Cities)</h3>
 <div id="chartContainer">
   <script type="/assets/javascripts/reservations_revenue.js"></script>
 </div>
+
+<h3>Revenue by Month for Cities </h3>
+<p> Select a City </p>
+  <div class = "col-md-9">
+    <div id="drop-down">
+        <%= select_tag("City", options_for_select(["Houston", "Chicago", "Austin", "Louisville", "Denver"], :selected => params[:city])) %>
+        <input class="submit" id="submit" name="ShowRevenue" type="submit" />
+    </div>
+    <div class="cityRevenueContainer">
+    </div>
+  </div>
+<br>
+<br>
 
 <h3>Properties by State</h3>
 <div id="mapContainer">

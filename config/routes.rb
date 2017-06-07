@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     resources :properties, only: [:index, :edit, :update]
     resources :users, only: [:index]
     resources :analytics, only: [:index]
+    put '/analytics', to: 'analytics#update'
   end
 
   resources :users, only: [:edit, :update, :show]
