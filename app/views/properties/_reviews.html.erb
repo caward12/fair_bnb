@@ -7,11 +7,11 @@
 
 
     <div class="all-reviews">
-      <% @property.reviews.each do |review| %>
+      <% @property_reviews.each do |review| %>
         <%= image_tag(review.user.image_url, class: "review-picture") %> <h4 class='review-name'><%= review.user.full_name %></h4>
         <div class="star-rating" data-score= <%= review.rating %> ></div>
         <h5><%= review.date %></h5></br>
-        <p><%= review.comment %></p>
+        <p class="comment-text"><%= review.comment %></p>
         <hr>
       <% end %>
     <% else %>
@@ -19,6 +19,10 @@
       <h2>No reviews for this property</h2></br>
     </div>
     <% end %>
+    </div>
+    <div class="paginate">
+      <%= will_paginate @property_reviews, renderer: BootstrapPagination::Rails %>
+      <hr>
     </div>
 
     <script id="review-template" type="x-tmpl-mustache">
