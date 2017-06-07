@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe ChatterConversation do
+  attr_reader :cc, :chat_con_hash
+
+  before do
+    @chat_con_hash = {
+      :id=>104,
+      :first_message_date=>"2017-06-07T02:13:29.682Z",
+      :last_message_date=>"2017-06-07T02:13:29.682Z",
+      :messages=>[]
+    }
+
+    @cc = ChatterConversation.new(chat_con_hash)
+  end
+
   describe 'Attributes' do
-    attr_reader :cc, :chat_con_hash
-
-    before do
-      @chat_con_hash = {
-        :id=>104,
-        :first_message_date=>"2017-06-07T02:13:29.682Z",
-        :last_message_date=>"2017-06-07T02:13:29.682Z",
-        :messages=>[]
-      }
-
-      @cc = ChatterConversation.new(chat_con_hash)
-    end
-
     it 'Should have an ID' do
       expect(cc.id).to be_an Integer
       expect(cc.id).to eq chat_con_hash[:id]
