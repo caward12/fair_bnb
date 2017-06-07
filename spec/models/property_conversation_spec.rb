@@ -48,4 +48,26 @@ RSpec.describe PropertyConversation do
       expect(pc.property).to be property
     end
   end
+
+  describe 'Methods' do
+    describe '#fetch' do
+      it 'Creates a new conversation if one doesnt exist' do
+        pc = PropertyConversation.find_by(user: user, property: property)
+
+        expect(pc).to be nil
+
+        pc = PropertyConversation.fetch(user: user, property: property)
+
+        expect(pc).to eq PropertyConversation.last
+      end
+
+      it 'Retrieves the conversation if it exists' do
+        PropertyConversation.create(user: user, property: property)
+
+        pc = PropertyConversation.fetch(user: user, property: property)
+
+        expect(pc).to eq PropertyConversation.last
+      end
+    end
+  end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
-  
+
   root 'home#index'
 
   namespace :api, defaults: {format: :json} do
@@ -36,17 +36,19 @@ Rails.application.routes.draw do
     resources :properties, only: [:index, :edit, :update]
     resources :users, only: [:index]
   end
-  
-  resources :conversations, only: [:create, :show, :index]
+
   resources :messages, only: [:create]
   resources :users, only: [:edit, :update, :show]
 
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+    get '/messages', to: 'conversations#show', as: :conversation
   end
 
+  resources :conversations, only: [:index]
+
   resources :reservations, only: [:new]
-  
+
   namespace :user do
     resources :properties, only: [:index]
   end

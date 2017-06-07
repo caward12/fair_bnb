@@ -1,17 +1,4 @@
 FactoryGirl.define do
-  factory :conversation do
-    name "MyString"
-  end
-  
-  factory :message do
-    body "MyText"
-    user
-    conversation
-  end
-  # factory :identity do
-  #   user nil
-  # end
-
   factory :room_type do
     name 0
   end
