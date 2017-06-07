@@ -1,28 +1,56 @@
-<div class="pending_properties">
+
+
+
+
+
+<div class="pending_properties container admin-table-width">
   <h2>Pending Properties</h2>
+  <table class="table table-striped">
+    <tbody>
   <% @properties.where(status: :pending).each do |property| %>
-  <div id="<%=property.name.parameterize%>-pending">
-    <%= property.name %>
-    <%= button_to "Activate", admin_property_path(property), method: :put, params: {status: :active} %>
-    <%= button_to "Delete", admin_property_path(property), method: :delete, params: {id: property.id }, class: "btn-xs btn-danger delete-button" %>
-  </div>
+      <tr>
+       <th>Name</th>
+       <th>Status</th>
+       <th></th>
+      </tr>
+        <tr>
+          <td>
+            <%= property.name %>
+          </td>
+          <td>
+            <%= property.status %>
+          </td>
+          <td>
+            <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
+          </td>
+        </tr>
   <% end %>
+    <tbody>
+  <table>
 
 </div>
-
-<div class="all_properties">
+<div class="all_properties container admin-table-width">
   <h2>All Properties</h2>
+  <table class="table table-striped">
+    <tbody>
   <% @properties.where.not(status: :pending).each do |property| %>
-  <div class="row property-row">
-    <div id="<%=property.name.parameterize%>">
-      <div class="col-md-2">
-        <%= property.name %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= property.status %>
-      </div>
-      <div class="col-md-2">
-        <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
-      </div>
-    </div>
-  </div>
-
+          <tr>
+           <th>Name</th>
+           <th>Status</th>
+           <th></th>
+          </tr>
+            <tr>
+              <td>
+                <%= property.name %>
+              </td>
+              <td>
+                <%= property.status %>
+              </td>
+              <td>
+                <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
+              </td>
+            </tr>
   <% end %>
-</div>
+
+         </tbody>
+    </table>
