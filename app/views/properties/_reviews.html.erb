@@ -1,18 +1,23 @@
-<!-- <div class="col-md-8"> -->
-<div class="reviews-test col-md-7">
-<% unless @property.reviews.empty? %>
-<h2><%= @property.reviews.count %> Reviews</h2>
-  <% @property.reviews.each do |review| %>
-    <%= image_tag(review.user.image_url, class: "review-picture") %> <%= review.user.full_name %>
-    <div class="star-rating" data-score= <%= review.rating %> ></div>
-    <p><%= review.comment %></p>
+<div class="reviews-js col-md-7">
+  <% unless @property.reviews.empty? %>
+    <h2><%= @property.reviews.count %> Reviews</h2>
+    <hr>
+      <% @property.reviews.each do |review| %>
+        <%= image_tag(review.user.image_url, class: "review-picture") %> <h4 class='review-name'><%= review.user.full_name %></h4>
+        <div class="star-rating" data-score= <%= review.rating %> ></div>
+        <h5><%= review.date %></h5></br>
+        <p><%= review.comment %></p>
+        <hr>
+        <% end %>
+  <% else %>
+    <h2>No reviews for this property</h2></br>
   <% end %>
-<% end %>
 
 <script id="review-template" type="x-tmpl-mustache">
-  <img src={{image}}, class="review-picture" >
+  <img src={{image}}, class="review-picture" > <h4 class='review-name'>{{ name }}</h4>
   <div class="star-rating" data-score="{{ rating }}"></div>
-  <p>Comment: {{ comment }}!</p>
+  <h5>{{ date }}</h5></br>
+  <p>{{ comment }}!</p>
 </script>
 
 <% if current_user %>
@@ -35,13 +40,13 @@
     <div class="form-group row">
       <%= f.label :comment, class: 'col-sm-2 form-control-label' %>
   	<div class="col-sm-6">
-        <%= f.text_area :comment, class: 'form-control' %>
+        <%= f.text_area :comment, class: 'form-control comment-form' %>
   	<div>
     </div>
     <br/>
     <div class="form-group row">
       <div class="col-sm-10">
-        <%= f.submit 'Submit', class: 'btn btn-primary'%>
+        <%= f.submit 'Submit', class: 'btn btn-primary comment-submit'%>
       </div>
     </div>
   <% end %>
