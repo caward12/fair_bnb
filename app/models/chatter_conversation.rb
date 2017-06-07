@@ -2,15 +2,6 @@ class ChatterConversation
   attr_reader :id, :first_message_date
   attr_accessor :messages, :last_message_date
 
-  def initialize(params = nil)
-    params ||= ChatterService.new_conversation
-
-    @id = params[:id]
-    @messages = build_messages(params[:messages])
-    @first_message_date = DateTime.parse(params[:first_message_date])
-    @last_message_date = DateTime.parse(params[:last_message_date])
-  end
-
   def self.service
     @service ||= ChatterService
   end
@@ -20,7 +11,20 @@ class ChatterConversation
     new(cc)
   end
 
+  def self.post_message(params)
+    service.post_message(params)
+  end
+
 private
+
+  def initialize(params = nil)
+    params ||= ChatterService.new_conversation
+
+    @id = params[:id]
+    @messages = build_messages(params[:messages])
+    @first_message_date = DateTime.parse(params[:first_message_date])
+    @last_message_date = DateTime.parse(params[:last_message_date])
+  end
 
   def build_messages(messages)
     messages.map do |msg|

@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe ChatterService do
+  attr_reader :new_convo
+
+  before do
+    VCR.use_cassette 'conversations/new_convo_for_tests' do
+      @new_convo = ChatterConversation.new
+    end
+  end
+
   describe '#new_conversation' do
     it 'Returns a new ChatterConversation' do
       VCR.use_cassette 'conversations/service#new_conversation' do
@@ -20,10 +28,10 @@ RSpec.describe ChatterService do
   describe '#find_conversation' do
     it 'Finds a ChatterConversation by cid' do
       VCR.use_cassette 'conversations/service#find_conversation' do
-        convo = ChatterService.find_conversation(104)
+        convo = ChatterService.find_conversation(new_convo.id)
 
         expect(convo).to be_a Hash
-        expect(convo[:id]).to eq 104
+        expect(convo[:id]).to eq new_convo.id
       end
     end
   end
@@ -31,26 +39,28 @@ RSpec.describe ChatterService do
   describe '#post_message' do
     it 'Posts a message to a conversation' do
       VCR.use_cassette 'conversations/service#post_message' do
+        user = create :user
         params = {
-          cid: 104,
+          cid: new_convo.id,
           body: 'Im another ChatterMessage body',
-          author: 1
+          author: user.id
         }
 
         ChatterService.post_message(params)
-        convo = ChatterConversation.find_conversation(params[:cid])
+        convo = ChatterConversation.find(params[:cid])
 
         expect(convo.messages.last.body).to eq params[:body]
-        expect(convo.messages.last.author).to eq params[:author]
+        expect(convo.messages.last.user).to eq user
       end
     end
 
     it 'Returns a hash' do
       VCR.use_cassette 'conversations/service#post_message_returns_a_hash' do
+        user = create :user
         params = {
-          cid: 104,
+          cid: new_convo.id,
           body: 'Im another ChatterMessage body',
-          author: 1
+          author: user.id
         }
 
         response = ChatterService.post_message(params)
@@ -61,7 +71,7 @@ RSpec.describe ChatterService do
         expect(response).to have_key :author
 
         expect(response[:body]).to eq params[:body]
-        expect(response[:author]).to eq params[:author]
+        expect(response[:author]).to eq params[:author].to_s
       end
     end
   end
