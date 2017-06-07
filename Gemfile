@@ -32,7 +32,6 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 
 group :development, :test do
-  gem 'rack_session_access'
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'pry-rails'
