@@ -60,7 +60,7 @@
           <hr>
           <h3>Hosted by <%= @property.owner.full_name %></h3>
           <% if current_user %>
-            <h4><%= link_to "Message #{@property.owner.first_name}", conversations_path(user_1_id: current_user.id, user_2_id: @property.owner.id), method: :post %></h4>
+            <h4><%= link_to "Message #{@property.owner.first_name}", property_conversation_path(@property, current_user) %></h4>
           <% end %>
         </div>
       </div>
