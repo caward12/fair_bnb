@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-       <table class="table table-striped">
+       <table class="table table-striped table-hover table-condensed">
           <h2>Pending Properties</h2>
           <tbody>
         <% @pending_properties.each do |property| %>
@@ -12,7 +12,7 @@
             </tr>
               <tr>
                 <td>
-                  <%= property.name %>
+                  <%= link_to property.name, property_path(property) %>
                 </td>
                 <td>
                   <%= property.status %>
@@ -29,7 +29,7 @@
 
 
 <div class="col-md-6">
-  <table class="table table-striped">
+  <table class="table table-striped table-hover table-condensed">
       <h2>Active Properties</h2>
     <tbody>
   <% @active_properties.each do |property| %>
@@ -40,7 +40,7 @@
           </tr>
             <tr>
               <td>
-                <%= property.name %>
+                <%= link_to property.name, property_path(property) %>
               </td>
               <td>
                 <%= property.status %>
