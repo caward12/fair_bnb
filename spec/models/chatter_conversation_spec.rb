@@ -4,13 +4,15 @@ RSpec.describe ChatterConversation do
   attr_reader :cc, :chat_con_hash
 
   before do
+    user = create :user
+
     @chat_con_hash = {
       :id=>104,
       :first_message_date=>"2017-06-07T02:13:29.682Z",
       :last_message_date=>"2017-06-07T02:13:29.682Z",
       :messages=>[{
         body: 'Argle barf?',
-        author: 7
+        author: user.id
         }]
     }
 
@@ -25,7 +27,7 @@ RSpec.describe ChatterConversation do
 
     it 'Should have a messages array' do
       expect(cc.messages).to be_an Array
-      expect(cc.messages).to eq chat_con_hash[:messages]
+      expect(cc.messages.count).to eq chat_con_hash[:messages].count
       expect(cc.messages.first).to be_a ChatterMessage
     end
 
@@ -41,6 +43,14 @@ RSpec.describe ChatterConversation do
   end
 
   describe 'Methods' do
+    describe '#new' do
+      it 'Should return a new, empty conversation if no args are given' do
+        new_convo = ChatterConversation.new
+        expect(new_convo).to be_a ChatterConversation
+        expect(new_convo.messages.empty?).to be true
+      end
+    end
+
     describe '#find' do
       attr_reader :convo
 
@@ -61,9 +71,12 @@ RSpec.describe ChatterConversation do
       attr_reader :params
 
       before do
+        user = create :user
+        convo = ChatterConversation.new
+
         @params = {
-          conversation_id: 22,
-          author: 1,
+          conversation_id: convo.id,
+          author: user.id,
           body: 'YOLO'
         }
       end
@@ -72,12 +85,13 @@ RSpec.describe ChatterConversation do
         VCR.use_cassette 'conversations/#post_message' do
           convo = ChatterConversation.find(params[:conversation_id])
 
-          expect(convo.messages.last.body).to_not eq 'YOLO'
+          expect(convo.messages.empty?).to be true
 
           ChatterConversation.post_message(params)
 
           convo = ChatterConversation.find(params[:conversation_id])
 
+          expect(convo.messages.empty?).to be false
           expect(convo.messages.last.body).to eq 'YOLO'
         end
       end

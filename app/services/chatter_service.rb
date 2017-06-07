@@ -3,8 +3,7 @@ class ChatterService
 
   def self.new_conversation
     response = conn.post('conversations')
-    parsed = JSON.parse(response.body, symbolize_names: true)
-    ChatterConversation.new(parsed)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.find_conversation(cid)

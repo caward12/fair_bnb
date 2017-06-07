@@ -1,5 +1,6 @@
-class ConversationPresenter < Struct.new(:chatter_conversation, :view)
+class ConversationPresenter
   attr_reader :id, :property, :owner, :guest, :messages
+
   def initialize(args)
     prop = args[:property] || 'No property'
     convo = args[:convo] || 'No convo'
