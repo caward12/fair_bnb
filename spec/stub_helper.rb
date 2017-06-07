@@ -39,5 +39,49 @@ def stub_google
       expires: true
     }
   })
+end
 
+def make_reservation
+  fill_in :check_in_date, with: check_in_date
+  fill_in :check_out_date, with: check_out_date
+  fill_in :guests, with: 1
+  click_on "Request to Book"
+end
+
+def per_month_rev(mon)
+  "$#{(9.99*mon).round(2)}"
+end
+
+
+def find_city_revenue(cities, limit = 10, month = "", year = "")
+  if (month == "") && (year == "")
+    revenue = cities.map do |city|
+      Property.joins(:reservations)
+        .where(city: city)
+        .sum('reservations.total_price')
+        .limit(limit)
+    # binding.pry
+    # revenue.sort
+    end
+  elsif (month == "")
+    revenue = cities.map do |city|
+      Property.joins(:reservations)
+        .where(city: city)
+        .sum('reservations.total_price')
+    end
+  elsif (year == "")
+    revenue = cities.map do |city|
+      Property.joins(:reservations)
+        .where(city: city)
+        .sum('reservations.total_price')
+    end
+  else
+    out = cities.reduce([]) do |t, city|
+      revenue = Property.joins(:reservations)
+        .where(city: city, reservations: {start_date: "#{year}-#{month}-01"})
+        .sum('reservations.total_price')
+      t << [city, revenue]; t
+    end
+    out.sort_by {|rev| rev[1]}.reverse.take(limit)
+  end
 end

@@ -2,6 +2,8 @@
 
 This is our Cloney Island Project!! ROMPHIM
 
+Production Site: https://fair-bnb.herokuapp.com/
+
 run `Bundle`
 
 run `rake db:reset`
@@ -12,6 +14,8 @@ GOOGLE_CLIENT_ID: <KEY>
 GOOGLE_CLIENT_SECRET: <SECRET_KEY>
 FACEBOOK_KEY: <KEY>
 FACEBOOK_SECRET: <SECRET_KEY>
+GOOGLE_MAP_KEY: <KEY>
+WEATHER_KEY: <KEY>
 test:
   GOOGLE_USER_TOKEN:
   FACEBOOK_USER_TOKEN:
@@ -36,21 +40,3 @@ The following api endpoints are available:
 
 `/api/v1/reservations/by_month` lists count of reservations by month. Can take a `city` param, that scopes to reservations by month for that city, default is for all reservations.
 
-
-* Ruby version:
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

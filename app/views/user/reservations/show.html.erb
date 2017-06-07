@@ -1,0 +1,15 @@
+<% header "Reservation for #{@reservation.renter_name} in #{@reservation.city}:"%>
+<h3 class="<%= @reservation.status %>">Status: <%= @reservation.print_status %></h3>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag(@reservation.image_url, width:'90%') %>
+  </div>
+  <div class="col-md-9">
+    <%= link_to "#{@reservation.nights} at #{@reservation.title}", property_path(@reservation.property) %>
+    <p>Total Cost: <%= @reservation.format_total_price %></p>
+    <p><%= @reservation.check_in_date %> - <%= @reservation.check_out_date %></p>
+    <p>for <%= @reservation.guests %></p>
+    <%= link_to "Host: #{@reservation.host_name}", user_path(@reservation.host) %>
+  </div>
+</div>

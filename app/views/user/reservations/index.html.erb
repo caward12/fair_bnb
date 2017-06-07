@@ -1,0 +1,26 @@
+<h1>Your Reservations</h1>
+
+<% %w(pending confirmed in_progress finished declined).each do |status| %>
+  <% if @reservations.got_status?(status) %>
+  <h2><%= @reservations.print_status(status) %></h2>
+    <div class="<%= status %>">
+      <% @reservations.status_collection(status).each do |reservation| %>
+      <div class='well reservation row'>
+        <div class="col-md-2 .col-md-pull-10">
+          <%= image_tag(reservation.image_url, height:'125px') %>
+        </div>
+        <div class="col-md-8">
+          <h3><%=link_to reservation.city, user_reservation_path(reservation.id) %></h3>
+          <p><%= reservation.check_in_date %> - <%= reservation.check_out_date %> | <%= reservation.guests %></p>
+          <p><%= reservation.title %></p>
+        </div>
+        <% if status != "declined" %>
+        <div class="col-md-2">
+          <%= link_to "Cancel Reservation", user_reservation_path(reservation, status: "declined"), method: :put, class: "btn btn-danger" %> <br><br>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

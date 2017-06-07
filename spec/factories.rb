@@ -15,12 +15,21 @@ FactoryGirl.define do
     active? false
     password "password"
     facebook_token ENV['FACEBOOK_USER_TOKEN']
+    factory :user_with_reservations do
+      reservations {create_list(:reservation_with_status, 5)}
+    end
   end
 
   factory :property_availability do
-    date "2017-05-16"
-    reserved? true
+    sequence :date do |n|
+      n = n-10 if n > 31
+      "2017-07-#{n}"
+    end
+    reserved? false
     property
+    factory :property_unavailability do
+      reserved? true
+    end
   end
 
   factory :reservation do
@@ -31,6 +40,24 @@ FactoryGirl.define do
     property
     association :renter, factory: :user
     status 1
+    factory :reservation_with_status do
+      # enum status: %w(pending confirmed in_progress finished declined)
+      sequence :status do |n|
+        if n % 5 == 0
+          0
+        elsif n % 5 == 1
+          1
+        elsif n % 5 == 2
+          2
+        elsif n % 5 == 3
+          3
+        elsif n % 5 == 4
+          4
+        else
+          n
+        end
+      end
+    end
   end
 
 property_images= [
@@ -44,7 +71,9 @@ sequence :image_url, property_images.cycle do |n|
 end
 
   factory :property do
-    name Faker::GameOfThrones.city
+    sequence :name do |n|
+      Faker::GameOfThrones.city + " #{n}"
+    end
     number_of_guests 1
     number_of_beds 1
     number_of_rooms 1
@@ -52,7 +81,9 @@ end
     description Faker::Hipster.paragraph
     price_per_night Faker::Commerce.price
     address Faker::Address.street_address
-    city Faker::Address.city
+    sequence :city do |n|
+      Faker::Address.city + " #{n}"
+    end
     state Faker::Address.state_abbr
     zip Faker::Address.zip
     lat "39.7392"
@@ -63,7 +94,11 @@ end
     check_out_time "11:00:00"
     status 1
     association :owner, factory: :user
+    factory :property_with_availability do
+      property_availabilities {create_list(:property_availability, 3)}
+    end
+    factory :property_with_reservations do
+      property_availabilities {create_list(:property_unavailability, 3)}
+    end
   end
-
-
 end

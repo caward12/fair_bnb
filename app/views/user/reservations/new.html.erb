@@ -1,0 +1,23 @@
+<% header "Complete your Reservation" %>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag(@reservation.image_url, width:'90%') %>
+  </div>
+  <div class="col-md-9">
+    <p><%= "#{@reservation.nights} at #{@reservation.title}" %>
+    <p>Total Cost: <%= @reservation.format_total_price %></p>
+    <p><%= @reservation.check_in_date %> - <%= @reservation.check_out_date %></p>
+    <p>for <%= @reservation.guests %></p>
+  </div>
+</div>
+
+<%= form_for @reservation, :url => user_reservations_path do |f| %>
+  <%= f.hidden_field :total_price %>
+  <%= f.hidden_field :start_date %>
+  <%= f.hidden_field :end_date %>
+  <%= f.hidden_field :number_of_guests %>
+  <%= f.hidden_field :property_id %>
+  <%= f.hidden_field :renter_id %>
+  <%= f.submit "Complete Booking" %>
+<% end %>

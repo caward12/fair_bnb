@@ -25,23 +25,23 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Last-Modified:
-      - Thu, 25 May 2017 00:31:33 GMT
+      - Tue, 30 May 2017 21:50:51 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Creationtime:
-      - '0.151'
+      - '0.057'
       Vary:
       - Accept-Encoding
       Expires:
-      - Thu, 25 May 2017 00:33:00 GMT
+      - Tue, 30 May 2017 21:51:01 GMT
       Cache-Control:
       - max-age=0, no-cache
       Pragma:
       - no-cache
       Date:
-      - Thu, 25 May 2017 00:33:00 GMT
+      - Tue, 30 May 2017 21:51:01 GMT
       Content-Length:
-      - '2551'
+      - '2560'
       Connection:
       - keep-alive
     body:
@@ -53,15 +53,16 @@ http_interactions:
         {\n\t\t\"full\":\"Chickasha, OK\",\n\t\t\"city\":\"Chickasha\",\n\t\t\"state\":\"OK\",\n\t\t\"state_name\":\"Oklahoma\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"zip\":\"73018\",\n\t\t\"magic\":\"1\",\n\t\t\"wmo\":\"99999\",\n\t\t\"latitude\":\"35.04000092\",\n\t\t\"longitude\":\"-97.94999695\",\n\t\t\"elevation\":\"335.0\"\n\t\t},\n\t\t\"observation_location\":
         {\n\t\t\"full\":\"Chickasha, Oklahoma\",\n\t\t\"city\":\"Chickasha\",\n\t\t\"state\":\"Oklahoma\",\n\t\t\"country\":\"US\",\n\t\t\"country_iso3166\":\"US\",\n\t\t\"latitude\":\"35.09999847\",\n\t\t\"longitude\":\"-97.97000122\",\n\t\t\"elevation\":\"1148
         ft\"\n\t\t},\n\t\t\"estimated\": {\n\t\t},\n\t\t\"station_id\":\"KCHK\",\n\t\t\"observation_time\":\"Last
-        Updated on May 24, 7:15 PM CDT\",\n\t\t\"observation_time_rfc822\":\"Wed,
-        24 May 2017 19:15:00 -0500\",\n\t\t\"observation_epoch\":\"1495671300\",\n\t\t\"local_time_rfc822\":\"Wed,
-        24 May 2017 19:31:33 -0500\",\n\t\t\"local_epoch\":\"1495672293\",\n\t\t\"local_tz_short\":\"CDT\",\n\t\t\"local_tz_long\":\"America/Chicago\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Clear\",\n\t\t\"temperature_string\":\"77
-        F (25 C)\",\n\t\t\"temp_f\":77,\n\t\t\"temp_c\":25,\n\t\t\"relative_humidity\":\"39%\",\n\t\t\"wind_string\":\"From
-        the East at 6 MPH\",\n\t\t\"wind_dir\":\"East\",\n\t\t\"wind_degrees\":80,\n\t\t\"wind_mph\":6,\n\t\t\"wind_gust_mph\":0,\n\t\t\"wind_kph\":9,\n\t\t\"wind_gust_kph\":0,\n\t\t\"pressure_mb\":\"1005\",\n\t\t\"pressure_in\":\"29.68\",\n\t\t\"pressure_trend\":\"-\",\n\t\t\"dewpoint_string\":\"50
-        F (10 C)\",\n\t\t\"dewpoint_f\":50,\n\t\t\"dewpoint_c\":10,\n\t\t\"heat_index_string\":\"NA\",\n\t\t\"heat_index_f\":\"NA\",\n\t\t\"heat_index_c\":\"NA\",\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"77
-        F (25 C)\",\n\t\t\"feelslike_f\":\"77\",\n\t\t\"feelslike_c\":\"25\",\n\t\t\"visibility_mi\":\"N/A\",\n\t\t\"visibility_km\":\"N/A\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"1\",\"precip_1hr_string\":\"-9999.00
+        Updated on May 30, 4:35 PM CDT\",\n\t\t\"observation_time_rfc822\":\"Tue,
+        30 May 2017 16:35:00 -0500\",\n\t\t\"observation_epoch\":\"1496180100\",\n\t\t\"local_time_rfc822\":\"Tue,
+        30 May 2017 16:50:51 -0500\",\n\t\t\"local_epoch\":\"1496181051\",\n\t\t\"local_tz_short\":\"CDT\",\n\t\t\"local_tz_long\":\"America/Chicago\",\n\t\t\"local_tz_offset\":\"-0500\",\n\t\t\"weather\":\"Clear\",\n\t\t\"temperature_string\":\"90
+        F (32 C)\",\n\t\t\"temp_f\":90,\n\t\t\"temp_c\":32,\n\t\t\"relative_humidity\":\"29%\",\n\t\t\"wind_string\":\"From
+        the South at 7 MPH\",\n\t\t\"wind_dir\":\"South\",\n\t\t\"wind_degrees\":180,\n\t\t\"wind_mph\":7,\n\t\t\"wind_gust_mph\":0,\n\t\t\"wind_kph\":11,\n\t\t\"wind_gust_kph\":0,\n\t\t\"pressure_mb\":\"1018\",\n\t\t\"pressure_in\":\"30.05\",\n\t\t\"pressure_trend\":\"+\",\n\t\t\"dewpoint_string\":\"54
+        F (12 C)\",\n\t\t\"dewpoint_f\":54,\n\t\t\"dewpoint_c\":12,\n\t\t\"heat_index_string\":\"87
+        F (31 C)\",\n\t\t\"heat_index_f\":87,\n\t\t\"heat_index_c\":31,\n\t\t\"windchill_string\":\"NA\",\n\t\t\"windchill_f\":\"NA\",\n\t\t\"windchill_c\":\"NA\",\n\t\t\"feelslike_string\":\"87
+        F (31 C)\",\n\t\t\"feelslike_f\":\"87\",\n\t\t\"feelslike_c\":\"31\",\n\t\t\"visibility_mi\":\"N/A\",\n\t\t\"visibility_km\":\"N/A\",\n\t\t\"solarradiation\":\"--\",\n\t\t\"UV\":\"7\",\"precip_1hr_string\":\"-9999.00
         in (-9999.00 mm)\",\n\t\t\"precip_1hr_in\":\"-9999.00\",\n\t\t\"precip_1hr_metric\":\"--\",\n\t\t\"precip_today_string\":\"0.00
-        in (0.0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0.0\",\n\t\t\"icon\":\"clear\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/clear.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/OK/Chickasha.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/history/airport/KCHK/2017/5/24/DailyHistory.html\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=35.09999847,-97.97000122\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n"
+        in (0.0 mm)\",\n\t\t\"precip_today_in\":\"0.00\",\n\t\t\"precip_today_metric\":\"0.0\",\n\t\t\"icon\":\"clear\",\n\t\t\"icon_url\":\"http://icons.wxug.com/i/c/k/clear.gif\",\n\t\t\"forecast_url\":\"http://www.wunderground.com/US/OK/Chickasha.html\",\n\t\t\"history_url\":\"http://www.wunderground.com/history/airport/KCHK/2017/5/30/DailyHistory.html\",\n\t\t\"ob_url\":\"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=35.09999847,-97.97000122\",\n\t\t\"nowcast\":\"\"\n\t}\n}\n"
     http_version: 
-  recorded_at: Thu, 25 May 2017 00:33:00 GMT
+  recorded_at: Tue, 30 May 2017 21:51:01 GMT
 recorded_with: VCR 3.0.3
