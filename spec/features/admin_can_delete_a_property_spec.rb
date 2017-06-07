@@ -10,10 +10,6 @@ RSpec.feature  "an admin visiting the admin properties path" do
 
     visit admin_properties_path
 
-    # within("//div[@id='#{property.name.parameterize}']") do
-    #   click_on "Delete"
-    # end
-
     find('tr', text: property.name).click_button("Delete")
 
     within(".all_properties") do
@@ -34,10 +30,6 @@ RSpec.feature  "an admin visiting the admin properties path" do
     visit admin_properties_path
 
     find('tr', text: property.name).click_button("Delete")
-
-    # within("//div[@id='#{property.name.parameterize}-pending']") do
-    #   click_on "Delete"
-    # end
 
     within(".pending_properties") do
       expect(page).to_not have_content("#{property.name}")
