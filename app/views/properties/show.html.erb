@@ -40,6 +40,7 @@
           <hr>
           <h3>The space</h3>
           <%= render partial: 'the_space' %>
+          <hr>
         </div>
 
         <div class="tab-pane" id="location" role="tabpanel">
@@ -47,12 +48,14 @@
           <hr>
           <h3>The neighborhood</h3>
           <%= render partial: 'the_neighborhood' %>
+          <hr>
         </div>
 
         <div class="tab-pane" id="host" role="tabpanel">
           <%= render partial: 'property_header' %>
           <hr>
           <h3>Hosted by <%= @property.owner.full_name %></h3>
+          <hr>
         </div>
 
         <div class="tab-pane" id="reviews" role="tabpanel">
