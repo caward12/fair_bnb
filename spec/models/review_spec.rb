@@ -37,4 +37,15 @@ RSpec.describe Review, type: :model do
 
     expect(review.date).to eq("June 2017")
   end
+
+  it "json_presenter method returns correct attributes" do
+    review = create(:review)
+
+    expect(review.json_presenter).to be_a(Hash)
+    expect(review.json_presenter[:rating]).to eq(1)
+    expect(review.json_presenter[:comment]).to eq("MyText")
+    expect(review.json_presenter[:image]).to eq("https://fillmurray.com/200/200")
+    expect(review.json_presenter[:name]).to be_a(String)
+    expect(review.json_presenter[:date]).to eq("June 2017")
+  end
 end
