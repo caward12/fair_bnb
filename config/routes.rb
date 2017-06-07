@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
     get '/messages', to: 'conversations#show', as: :conversation
+    post '/messages', to: 'messages#create'
   end
 
   resources :conversations, only: [:index]
@@ -64,7 +65,6 @@ Rails.application.routes.draw do
   resources :reservations, only: [:new]
 
   namespace :user do
-
     resources :properties, only: [:index] do
       resources :reservations, only: [:index, :update], controller: 'properties/reservations'
     end

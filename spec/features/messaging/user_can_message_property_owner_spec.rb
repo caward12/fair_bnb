@@ -15,33 +15,50 @@ RSpec.feature "Registered user can message a property owner" do
 
   context 'And a conversation does not exist' do
     scenario "So it starts a new conversation" do
-      click_on "Message #{owner.first_name}"
+      VCR.use_cassette 'conversations/start_new_convo' do
+        click_on "Message #{owner.first_name}"
 
-      convo = Conversation.find_by(user: user, property: property)
+        expect(current_path).to eq(property_conversation_path(property, user))
+        expect(page).to have_content("Chat between #{owner.full_name} & #{user.full_name} about #{property.name}")
+        expect(page).to have_link property.name
 
-      expect(current_path).to eq(conversation_path(convo))
-      expect(page).to have_content("Chat between #{user.first_name} and #{owner.first_name} about #{property.name}")
-      expect(page).to have_link property.name
+        within '.conversation-messages' do
+          expect(page).to have_selector('.message', count: 0)
+        end
+      end
+    end
 
-      expect(page).to have_selector('.conversation-messages:empty')
+    scenario "So a user can write a message", focus: true do
+      VCR.use_cassette 'conversations/write_a_message' do
+        click_on "Message #{owner.first_name}"
+
+        fill_in 'message_body', with: 'Hi, friend!'
+        click_on 'send'
+
+        within '.conversation-messages' do
+          within '.message:first' do
+            expect(page).to have_content 'Hi, friend!'
+            expect(page).to have_content user.first_name
+          end
+        end
+      end
     end
   end
 
   context 'And a conversation exists' do
     scenario 'So it resumes the old conversation' do
-      convo = create :conversation, property: property, user: user
-      message = convo.messages.first
+      VCR.use_cassette 'conversations/resume_conversation' do
+        click_on "Message #{owner.first_name}"
 
-      click_on "Message #{owner.first_name}"
+        expect(current_path).to eq(property_conversation_path(property, user))
+        expect(page).to have_content("Chat between #{user.first_name} and #{owner.first_name} about #{property.name}")
+        expect(page).to have_link property.name
 
-      expect(current_path).to eq(conversation_path(convo))
-      expect(page).to have_content("Chat between #{user.first_name} and #{owner.first_name} about #{property.name}")
-      expect(page).to have_link property.name
-
-      within '.conversation-messages' do
-        within '.message:first' do
-          expect(page).to have_content message.body
-          expect(page).to have_content message.author
+        within '.conversation-messages' do
+          within '.message:first' do
+            expect(page).to have_content 'Hi, friend!'
+            expect(page).to have_content user.first_name
+          end
         end
       end
     end
