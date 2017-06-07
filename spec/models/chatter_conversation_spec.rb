@@ -35,4 +35,22 @@ RSpec.describe ChatterConversation do
       expect(cc.last_message_date).to eq chat_con_hash[:last_message_date]
     end
   end
+
+  describe 'Methods' do
+    describe '#find' do
+      attr_reader :convo
+
+      before do
+        @convo = ChatterConversation.find(cc.id)
+      end
+
+      it 'Finds a conversation by cid' do
+        expect(convo.id).to eq cc.id
+      end
+
+      it 'Returns a conversation object' do
+        expect(convo).to be_a ChatterConversation
+      end
+    end
+  end
 end
