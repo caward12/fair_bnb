@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  // put this in a function
   function renderRaty(){
     $('.star-rating').raty({
       path: '/assets/',
@@ -10,19 +9,12 @@ $(document).ready(function(){
     });
   }
 
-  renderRaty()
+  renderRaty();
 
-$('#star-rating').raty({
-    path: '/assets',
-    scoreName: 'review[rating]'
+    $('#star-rating').raty({
+        path: '/assets',
+        scoreName: 'review[rating]'
 });
-
-// $('#star').raty({
-//   readOnly: true,
-//   score: <%= @property.average_rating %>,
-//   path: '/assets'
-// });
-
 
 $("#new_review").submit(function() {
   $.ajax({
@@ -31,19 +23,23 @@ $("#new_review").submit(function() {
     dataType: "json",
     data: $(this).serialize() ,
     success: function(response) {
-      // render this review on the page
-      $("#new_review").remove()
+      document.getElementById('review_comment').value = '';
+      var list = document.querySelector('#star-rating').children
+      for (var i = 0; i < 5; i++) {
+        list[i].src = "/assets/star-off.png"
+      }
 
       var reviewTemplate = $('#review-template').html();
-      var reviewHtml = Mustache.render(reviewTemplate, response)
-      $(".reviews-test").append(reviewHtml);
+      var reviewHtml = Mustache.render(reviewTemplate, response);
+      $(".all-reviews").append(reviewHtml);
 
-      renderRaty()
+      renderRaty();
     },
     error: function(response){
-      console.log(response)
+      console.log(response);
     }
-  })
-  return false
-})
-})
+
+  });
+  return false;
+});
+});
