@@ -4,7 +4,9 @@
       <body>
         <div class="header">
           <h2>Thank you for booking with us. Your reservation is waiting for approval.</h2>
+          
           <h3>Status: <span class="status"><%= @reservation.print_status %></span></h3>
+         
           <%= image_tag(@reservation.image_url, width:'200px') %>
         </div>
           <ul>

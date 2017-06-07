@@ -44,6 +44,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :test do
