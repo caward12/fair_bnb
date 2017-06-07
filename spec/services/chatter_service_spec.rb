@@ -9,4 +9,13 @@ RSpec.describe ChatterService do
       expect(convo.messages.empty?).to be true
     end
   end
+
+  describe '#find_conversation' do
+    it 'Finds a ChatterConversation by cid' do
+      convo = ChatterService.find_conversation(104)
+
+      expect(convo).to be_a Hash
+      expect(convo[:id]).to eq 104
+    end
+  end
 end
