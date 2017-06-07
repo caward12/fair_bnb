@@ -9,6 +9,7 @@
              <th>Name</th>
              <th>Status</th>
              <th></th>
+             <th></th>
             </tr>
               <tr>
                 <td>
@@ -19,6 +20,9 @@
                 </td>
                 <td>
                   <%= button_to "Delete", admin_property_path(property), method: :delete, class: "btn-xs btn-danger delete-button" %>
+                </td>
+                <td>
+                  <%= button_to "Activate", admin_property_path(property, activate:''), method: :put, class: "btn-xs btn-info delete-button" %>
                 </td>
               </tr>
         <% end %>
