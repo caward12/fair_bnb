@@ -14,4 +14,18 @@ class Admin::PropertiesController < Admin::BaseController
     redirect_to admin_properties_path
   end
 
+  def destroy
+    property = Property.find(params[:id])
+    destroy_property(property)
+    redirect_to admin_properties_path
+  end
+
+end
+
+private
+
+def destroy_property(property)
+  property.reservations.destroy_all
+  property.property_availabilities.destroy_all
+  property.destroy
 end

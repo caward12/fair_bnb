@@ -8,6 +8,7 @@ require 'support/factory_girl'
 require 'database_cleaner'
 require 'stub_helper'
 require 'support/login_helper'
+require "rack_session_access/capybara"
 
 DatabaseCleaner.strategy = :truncation
 RSpec.configure do |c|

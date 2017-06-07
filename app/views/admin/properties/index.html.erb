@@ -1,14 +1,21 @@
 <div class="pending_properties">
   <h2>Pending Properties</h2>
   <% @properties.where(status: :pending).each do |property| %>
-    <%= property.name %>
+  <div id="<%=property.name.parameterize%>-pending">
+    <p><%= property.name %></p>
     <%= button_to "Activate", admin_property_path(property), method: :put, params: {status: :active} %>
-    <% end %>
+    <%= button_to "Delete", admin_property_path(property), method: :delete, params: {id: property.id } %>
+  </div>
+  <% end %>
+
 </div>
 
 <div class="all_properties">
   <h2>All Properties</h2>
   <% @properties.where.not(status: :pending).each do |property| %>
-    <%= property.name %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= property.status %><br>
-    <% end %>
+  <div id="<%=property.name.parameterize%>">
+    <p><%= property.name %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= property.status %><br></p>
+    <%= button_to "Delete", admin_property_path(property), method: :delete %>
+  </div>
+  <% end %>
 </div>
