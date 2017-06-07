@@ -4,7 +4,7 @@
        <table class="table table-striped">
           <h2>Pending Properties</h2>
           <tbody>
-        <% @properties.where(status: :pending).each do |property| %>
+        <% @pending_properties.each do |property| %>
             <tr>
              <th>Name</th>
              <th>Status</th>
@@ -30,9 +30,9 @@
 
 <div class="col-md-6">
   <table class="table table-striped">
-      <h2>All Properties</h2>
+      <h2>Active Properties</h2>
     <tbody>
-  <% @properties.where.not(status: :pending).each do |property| %>
+  <% @active_properties.each do |property| %>
           <tr>
            <th>Name</th>
            <th>Status</th>

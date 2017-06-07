@@ -1,7 +1,8 @@
 class Admin::PropertiesController < Admin::BaseController
 
   def index
-    @properties = Property.all()
+    @pending_properties = Property.pending_properties
+    @active_properties = Property.active_properties
   end
 
   def update
