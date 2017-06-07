@@ -3,7 +3,7 @@
     <title>Reservation</title>
       <body>
         <div class="header">
-          <h2>Thank you for booking with us. Your reservation is waiting for approval.</h2>
+          <h2 class="message">Your reservation is 24 hours from now!</h2>
           <h3>Status: <span class="status"><%= @reservation.print_status %></span></h3>
           <%= image_tag(@reservation.image_url, width:'200px') %>
         </div>
@@ -25,7 +25,7 @@
   }
 
   .status {
-    color: red;
+    color: green;
   }
 
   .header {
@@ -35,5 +35,9 @@
   ul {
     margin-top: 0em;
     line-height: 1.8;
+  }
+
+  .message {
+    color: red;
   }
 </style>

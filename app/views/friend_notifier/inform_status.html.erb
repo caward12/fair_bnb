@@ -3,8 +3,12 @@
     <title>Reservation</title>
       <body>
         <div class="header">
-          <h2>Thank you for booking with us. Your reservation is waiting for approval.</h2>
-          <h3>Status: <span class="status"><%= @reservation.print_status %></span></h3>
+          <h2>Your Fair-bnb reservation is <%= @reservation.status %>!</h2>
+          <% if @reservation.status == "confirmed" %>
+          <h3>Status: <span class="status-green"><%= @reservation.print_status %></span></h3>
+          <% else %>
+          <h3>Status: <span class="status-red"><%= @reservation.status %></span></h3>
+          <% end %>
           <%= image_tag(@reservation.image_url, width:'200px') %>
         </div>
           <ul>
@@ -24,7 +28,11 @@
     font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
-  .status {
+  .status-green {
+    color: green;
+  }
+
+  .status-red {
     color: red;
   }
 
@@ -36,4 +44,5 @@
     margin-top: 0em;
     line-height: 1.8;
   }
+
 </style>
