@@ -35,7 +35,11 @@ $.ajax({
 
   function draw(data){
     var myChart = new dimple.chart(svg, data);
-    myChart.setBounds(60, 30, 510, 330)
+    myChart.defaultColors = [
+      new dimple.color("orange"),
+      new dimple.color("red") // You can use #RGB here
+    ];
+    myChart.setBounds(60, 30, 710, 530)
     myChart.addCategoryAxis("x", ["id", "price-beds"]);
     myChart.addMeasureAxis("y", "count");
     myChart.addSeries("price-beds", dimple.plot.bar);

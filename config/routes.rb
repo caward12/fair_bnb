@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         get '/highest_revenue_cities', to: 'cities_revenue#index'
       end
       namespace :users do
+        get ':id/revenue', to: 'users#index'
         namespace :reservations do
           get '/nights', to: 'nights#index'
           get '/bookings', to: 'bookings#index'

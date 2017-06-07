@@ -129,4 +129,5 @@ class Reservation < ApplicationRecord
                       GROUP BY to_char(start_date, 'Month')
                       ORDER BY to_char(start_date, 'Month');")
   end
+
 end

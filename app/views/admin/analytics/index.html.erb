@@ -12,7 +12,6 @@
 </div>
 
 <h3>Number of Reservations by Month</h3>
-
 <div id="monthContainer">
   <script type="/assets/javascripts/reservations_month.js"></script>
 </div>
@@ -21,6 +20,16 @@
 <div id="chartContainer">
   <script type="/assets/javascripts/reservations_revenue.js"></script>
 </div>
+
+<h3>Properties by State</h3>
+<div id="mapContainer">
+  <!-- <script type="/assets/javascripts/property_map.js"></script> -->
+  <div id="tooltip"></div><!-- div to hold tooltip. -->
+<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
+<script type="/assets/javascripts/uStates.js"></script>
+
+</div>
+
 
 <h3>Revenue by Month for Cities </h3>
 <p> Select a City </p>
@@ -32,14 +41,45 @@
     <div class="cityRevenueContainer">
     </div>
   </div>
+  <br>
+  <br>
+  <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 
-<h3>Properties by State</h3>
-<div id="mapContainer">
-  <!-- <script type="/assets/javascripts/property_map.js"></script> -->
-  <div id="tooltip"></div><!-- div to hold tooltip. -->
-<svg width="960" height="600" id="statesvg"></svg> <!-- svg to hold the map. -->
-<script type="/assets/javascripts/uStates.js"></script>
-
-</div>
+<h3>Revenue breakdown for A User </h3>
+<p> Input a User ID </p>
+  <div class = "col-md-9">
+    <div id="user_revenue">
+      <input type="text" name="user_id" placeholder="User ID" class="form-control">
+        <input class="submit" id="submit" name="ShowRevenue" type="submit" />
+    </div>
+    <div class="userRevenueContainer">
+    </div>
+  </div>

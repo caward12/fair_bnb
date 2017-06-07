@@ -80,8 +80,8 @@ class Property < ApplicationRecord
     where("number_of_guests >= ?", guests)
   end
 
-  def self.total_revenue
-    inject {|property, total| property.reservation}
+  def revenue
+    reservations.inject(0) {|total, reservation| total + reservation.total_price}.to_f
   end
 
 end
