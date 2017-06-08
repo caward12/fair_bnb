@@ -61,6 +61,10 @@
         <div class="tab-pane" id="reviews" role="tabpanel">
           <%= render partial: 'property_header' %>
           <hr>
+          <h3>Hosted by <%= @property.owner.full_name %></h3>
+          <% if current_user %>
+            <h4><%= link_to "Message #{@property.owner.first_name}", property_conversation_path(@property, current_user) %></h4>
+          <% end %>
           <%= render partial: 'reviews' %>
         </div>
 

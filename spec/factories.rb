@@ -6,9 +6,6 @@ FactoryGirl.define do
     rating 1
     comment "MyText"
   end
-  # factory :identity do
-  #   user nil
-  # end
 
   factory :room_type do
     name 0
@@ -112,6 +109,4 @@ end
       property_availabilities {create_list(:property_unavailability, 3)}
     end
   end
-
-
 end

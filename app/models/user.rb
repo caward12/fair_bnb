@@ -4,12 +4,18 @@ class User < ApplicationRecord
 
   has_many :reservations, foreign_key: "renter_id"
   has_many :properties, foreign_key: "owner_id"
+  has_many :property_conversations
   scope :active_users, -> { where(active?: true) }
+
   has_many :reviews
   enum role: %w(registered_user admin)
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def dialogues
+    properties.map(&:property_conversations).zip(property_conversations).flatten
   end
 
   def property_count
