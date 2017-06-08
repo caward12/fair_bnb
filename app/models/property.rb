@@ -9,6 +9,7 @@ class Property < ApplicationRecord
 
   has_many :reservations
   has_many :property_availabilities
+  has_many :reviews
 
   enum status: %w(pending active archived)
   # geocoded_by :full_address,  :latitude  => :lat, :longitude => :long
@@ -78,5 +79,11 @@ class Property < ApplicationRecord
   def self.search_guests(guests)
     where("number_of_guests >= ?", guests)
   end
+
+  def average_rating
+    return 0 if reviews.blank?
+    reviews.sum(:rating) / reviews.size
+  end
+
 
 end
