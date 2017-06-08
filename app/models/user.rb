@@ -114,7 +114,7 @@ class User < ApplicationRecord
   def self.property_revenues(user_id)
     revenue = {}
     revenue["revenue"] = User.revenue(user_id)
-    User.find(user_id).properties.map do |property|
+    User.find_by_id(user_id).properties.map do |property|
       revenue[property.name] = property.revenue
     end
     revenue

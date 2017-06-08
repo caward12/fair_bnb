@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::Users::UsersController < ApplicationController
 
   def index
     render json: User.property_revenues(params[:id])
