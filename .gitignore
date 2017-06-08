@@ -21,5 +21,3 @@
 .DS_Store
 #ignore coverage
 coverage
-
-spec/fixtures/vcr_cassettes

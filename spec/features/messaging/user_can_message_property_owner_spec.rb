@@ -27,23 +27,6 @@ RSpec.feature "Registered user can message a property owner" do
         end
       end
     end
-
-    # testing web sockets will require a different approach
-    xscenario "So a user can write a message", focus: true do
-      VCR.use_cassette 'conversations/write_a_message' do
-        click_on "Message #{owner.first_name}"
-
-        fill_in 'message_body', with: 'Hi, friend!'
-        click_on 'send'
-
-        within '.conversation-messages' do
-          within '.message:first' do
-            expect(page).to have_content 'Hi, friend!'
-            expect(page).to have_content user.first_name
-          end
-        end
-      end
-    end
   end
 
   context 'And a conversation exists' do

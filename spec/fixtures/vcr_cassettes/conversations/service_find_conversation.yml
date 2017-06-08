@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://159.203.168.46/api/v1/conversations/549
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"bb5c79a1777a1f66e177a9293d5d6264"
+      X-Runtime:
+      - '0.013503'
+      X-Request-Id:
+      - d4b68c7c-0a68-4899-9ada-94d9bdcf89ca
+      Date:
+      - Thu, 08 Jun 2017 03:32:43 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"id":549,"first_message_date":"2017-06-08T03:32:43.660Z","last_message_date":"2017-06-08T03:32:43.660Z","messages":[]}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:44 GMT
+recorded_with: VCR 3.0.3

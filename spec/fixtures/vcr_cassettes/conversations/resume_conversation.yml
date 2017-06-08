@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"0b1cb4c6870bc47548b219dc681c2d3b"
+      X-Runtime:
+      - '0.014304'
+      X-Request-Id:
+      - 50998745-6a78-4ad9-8592-819cf34c8050
+      Date:
+      - Thu, 08 Jun 2017 03:32:07 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"id":534,"first_message_date":"2017-06-08T03:32:07.526Z","last_message_date":"2017-06-08T03:32:07.526Z","messages":[]}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:07 GMT
+- request:
+    method: get
+    uri: http://159.203.168.46/api/v1/conversations/534
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"0b1cb4c6870bc47548b219dc681c2d3b"
+      X-Runtime:
+      - '0.009030'
+      X-Request-Id:
+      - 60d2e92f-0e56-4383-8a30-5022d58ab0b0
+      Date:
+      - Thu, 08 Jun 2017 03:32:07 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"id":534,"first_message_date":"2017-06-08T03:32:07.526Z","last_message_date":"2017-06-08T03:32:07.526Z","messages":[]}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:07 GMT
+recorded_with: VCR 3.0.3
