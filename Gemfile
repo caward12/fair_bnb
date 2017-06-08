@@ -22,6 +22,7 @@ gem 'faraday'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'simplecov', :require => false, :group => :test
+gem 'redis', '~> 3.0'
 gem 'geocoder'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
