@@ -70,6 +70,7 @@ class Seed
         )
       puts "#{row} property created"
       generate_property_availabilities(property)
+      generate_ratings_for_properties(property)
     end
   end
 
@@ -81,6 +82,16 @@ class Seed
     end
     puts "#{property.id} property availabilities created"
     generate_reservations_for_users(property)
+  end
+
+  def generate_ratings_for_properties(property)
+    5.times do |i|
+      property.reviews.create(
+        rating: rand(1..5),
+        comment: Faker::Hipster.paragraph,
+        user_id: User.order('RANDOM()').first.id,
+      )
+    end
   end
 
   def generate_reservations_for_users(property)
@@ -110,3 +121,7 @@ class Seed
 end
 
 Seed.new
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

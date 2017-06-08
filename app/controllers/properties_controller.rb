@@ -3,6 +3,8 @@ class PropertiesController < ApplicationController
   def show
     @property = Property.find(params[:id])
     @weather = @property.get_weather
+    @review = Review.new
+    @property_reviews = @property.reviews.order(:created_at).paginate(:per_page => 3, :page => params[:page])
   end
 
   def index

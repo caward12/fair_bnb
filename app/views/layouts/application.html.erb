@@ -4,13 +4,12 @@
     <%= favicon_link_tag 'fairbnb_logo.png' %>
     <title>FairBnb</title>
     <%= csrf_meta_tags %>
-
+    <%=stylesheet_link_tag "https://www.authy.com/form.authy.min.css" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  <%=javascript_include_tag "https://www.authy.com/form.authy.min.js" %>
-  <%=stylesheet_link_tag "https://www.authy.com/form.authy.min.css" %>
+    <%=javascript_include_tag "https://www.authy.com/form.authy.min.js" %>
 
 
+    <%=javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js" %>
     <link href="https://fonts.googleapis.com/css?family=Khula" rel="stylesheet">
 
   </head>
@@ -33,6 +32,8 @@
         <h1><%= yield :header %></h1>
       <%= yield %>
     </div>
-
+      <%= javascript_include_tag 'jquery.raty.js' %>
+      <%= javascript_include_tag 'ratings.js' %>
+      <%= javascript_include_tag 'application' %>
   </body>
 </html>

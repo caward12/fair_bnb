@@ -4,7 +4,7 @@ RSpec.feature "an admin visiting the admin_users_path" do
   scenario "can deactivate a user" do
     admin = create(:user, role: 1)
     user = create(:user, first_name: "Riley", active?: true)
-    
+
     login(admin)
 
     visit admin_users_path
