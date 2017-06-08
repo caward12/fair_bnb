@@ -321,7 +321,15 @@ footer ul li {
   float: right;
 }
 
-.state{
+.delete-button {
+  max-width: 65px;
+}
+
+.property-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.state {  
   fill: none;
   stroke: #a9a9a9;
   stroke-width: 1;
@@ -379,6 +387,5 @@ footer ul li {
 }
 
 .comment-text {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif"
-
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif";
 }
