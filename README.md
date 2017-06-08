@@ -39,4 +39,3 @@ The following api endpoints are available:
 *For reservations*
 
 `/api/v1/reservations/by_month` lists count of reservations by month. Can take a `city` param, that scopes to reservations by month for that city, default is for all reservations.
-

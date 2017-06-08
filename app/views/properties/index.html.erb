@@ -15,6 +15,7 @@
         <% if property.city == city %>
           <h4><%= link_to property.name, property_path(property) %></h4>
           <%= link_to image_tag(property.image_url, width: 500), property_path(property) %><br><br>
+          <h4 class="star-rating" data-score="<%= property.average_rating %>">Average Rating: </h4>
         <% end %>
       <% end %>
   <% end %>

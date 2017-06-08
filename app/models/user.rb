@@ -4,11 +4,20 @@ class User < ApplicationRecord
 
   has_many :reservations, foreign_key: "renter_id"
   has_many :properties, foreign_key: "owner_id"
+  has_many :reviews
 
   enum role: %w(registered_user admin)
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def property_count
+    properties.count
+  end
+
+  def property_revenue
+    properties.total_revenue
   end
 
   def self.from_omniauth(auth_info)
@@ -85,5 +94,23 @@ class User < ApplicationRecord
                       GROUP BY users.id
                       ORDER BY cost DESC
                       LIMIT(#{limit});")
+  end
+
+  def self.revenue(user_id)
+    self.find_by_sql("SELECT sum(reservations.total_price) AS cost
+                      FROM users
+                      JOIN properties ON users.id = properties.owner_id
+                      JOIN reservations ON properties.id = reservations.property_id
+                      WHERE users.id = #{user_id}
+                      ORDER BY cost DESC;")[0].cost.to_f
+  end
+
+  def self.property_revenues(user_id)
+    revenue = {}
+    revenue["revenue"] = User.revenue(user_id)
+    User.find(user_id).properties.map do |property|
+      revenue[property.name] = property.revenue
+    end
+    revenue
   end
 end

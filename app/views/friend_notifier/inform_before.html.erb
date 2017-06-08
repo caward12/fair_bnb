@@ -1,0 +1,43 @@
+<html>
+  <head></head>
+    <title>Reservation</title>
+      <body>
+        <div class="header">
+          <h2 class="message">Your reservation is 24 hours from now!</h2>
+          <h3>Status: <span class="status"><%= @reservation.print_status %></span></h3>
+          <%= image_tag(@reservation.image_url, width:'200px') %>
+        </div>
+          <ul>
+          <li><%= @reservation.title %></li>
+          <li>Total Cost: <%= @reservation.format_total_price %></li>
+          <li><%= @reservation.check_in_date %> - <%= @reservation.check_out_date %></li>
+          <li>For <%= @reservation.guests %></li>
+          <li><%= @reservation.host_name %></li>
+          </ul>
+      </body>
+</html>
+
+<style type="text/css">
+  body {
+    background: #293f50;
+    color: #888;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .status {
+    color: green;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  ul {
+    margin-top: 0em;
+    line-height: 1.8;
+  }
+
+  .message {
+    color: red;
+  }
+</style>

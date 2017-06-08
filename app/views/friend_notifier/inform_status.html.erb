@@ -1,0 +1,48 @@
+<html>
+  <head></head>
+    <title>Reservation</title>
+      <body>
+        <div class="header">
+          <h2>Your Fair-bnb reservation is <%= @reservation.status %>!</h2>
+          <% if @reservation.status == "confirmed" %>
+          <h3>Status: <span class="status-green"><%= @reservation.print_status %></span></h3>
+          <% else %>
+          <h3>Status: <span class="status-red"><%= @reservation.status %></span></h3>
+          <% end %>
+          <%= image_tag(@reservation.image_url, width:'200px') %>
+        </div>
+          <ul>
+          <li><%= @reservation.title %></li>
+          <li>Total Cost: <%= @reservation.format_total_price %></li>
+          <li><%= @reservation.check_in_date %> - <%= @reservation.check_out_date %></li>
+          <li>For <%= @reservation.guests %></li>
+          <li><%= @reservation.host_name %></li>
+          </ul>
+      </body>
+</html>
+
+<style type="text/css">
+  body {
+    background: #293f50;
+    color: #888;
+    font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .status-green {
+    color: green;
+  }
+
+  .status-red {
+    color: red;
+  }
+
+  .header {
+    padding: 20px;
+  }
+
+  ul {
+    margin-top: 0em;
+    line-height: 1.8;
+  }
+
+</style>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
+      get 'properties', to: 'properties#index'
       namespace :properties do
         get 'most_guests', to: 'most_guests#index'
         get 'most_expensive', to: 'most_expensive#index'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
         get '/highest_revenue_cities', to: 'cities_revenue#index'
       end
       namespace :users do
+        get ':id/revenue', to: 'users#index'
         namespace :reservations do
           get '/nights', to: 'nights#index'
           get '/bookings', to: 'bookings#index'
@@ -39,19 +41,21 @@ Rails.application.routes.draw do
   get '/log_in', to: 'login#index'
   get  '/dashboard', to: 'dashboard#index'
   delete '/logout', to: 'sessions#destroy'
-
   resources :users, only: [:edit, :update]
 
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :properties, only: [:index, :edit, :update, :destroy]
     resources :users, only: [:index]
+    resources :analytics, only: [:index]
+    put '/analytics', to: 'analytics#update'
   end
 
   resources :users, only: [:edit, :update, :show]
 
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :reviews, only: [:create]
   end
 
   resources :reservations, only: [:new]
@@ -64,4 +68,6 @@ Rails.application.routes.draw do
 
     resources :reservations, only: [:new, :create, :update, :index, :show]
   end
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
