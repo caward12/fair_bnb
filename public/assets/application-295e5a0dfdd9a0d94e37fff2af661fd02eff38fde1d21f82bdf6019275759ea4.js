@@ -15537,28 +15537,6 @@ return new Uc(t,n)}return e.tension=function(n){return t(+n)},e}(0);Dc.prototype
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
-
-
-
-
-this.App = {};
-
-App.cable = ActionCable.createConsumer();
-
-
-
-
-App.messages = App.cable.subscriptions.create('MessagesChannel', {  
-  received: function(data) {
-    $("#messages").removeClass('hidden')
-    $('textarea#message_body').val('')
-    return $('#messages').append(this.renderMessage(data));
-  },
-
-  renderMessage: function(data) {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
-  }
-});
 $(document).ready(function(){
   var svg = dimple.newSvg("#citiesPropertiesContainer", 800, 600);
 
