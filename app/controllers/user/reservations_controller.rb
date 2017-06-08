@@ -20,7 +20,11 @@ class User::ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    FriendNotifier.inform(current_user, @reservation).deliver_now
+
+    flash[:notice] = "Your reservation is placed."
     if @reservation.save
+     
       flash[:success] = "Reservation request successful and awaiting approval from host."
       redirect_to user_reservation_path(@reservation)
     end
