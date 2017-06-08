@@ -57,7 +57,7 @@ feature "request to book" do
 
       expect(current_path).to eq(user_reservation_path(Reservation.last))
 
-      within ".alert" do
+      within ".alert:last" do
         expect(page).to have_content("Reservation request successful and awaiting approval from host.")
       end
 
