@@ -188,4 +188,51 @@ http_interactions:
       string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:42:47.983Z"}'
     http_version: 
   recorded_at: Thu, 08 Jun 2017 03:42:48 GMT
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/618/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=618
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"cace943588398d18bbbf23a6f7c15070"
+      X-Runtime:
+      - '0.014337'
+      X-Request-Id:
+      - 3aa3574b-dda5-4f97-98bb-1a23a5c30c6d
+      Date:
+      - Thu, 08 Jun 2017 03:55:12 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:55:12.033Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:55:12 GMT
 recorded_with: VCR 3.0.3

@@ -62,6 +62,6 @@ add to cable.yml file
  
 `production:`
   `adapter: redis`
-  `url: redis://h:asdfqwer1234asdf@ec2-111-1-1-1.compute-1.amazonaws.com:111`
+  `url: redis://h:p97f4ddb2aacd4224b4efb3eac4626d36a8f4223fbb0b100f7c6a48c008ca3328@ec2-34-195-166-91.compute-1.amazonaws.com:29559`
 
   Article [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis)
