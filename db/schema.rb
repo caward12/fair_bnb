@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 20170607010304) do
     t.index ["renter_id"], name: "index_reservations_on_renter_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.text     "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["property_id"], name: "index_reviews_on_property_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
   create_table "room_types", force: :cascade do |t|
     t.integer  "name"
     t.datetime "created_at", null: false
@@ -129,4 +140,6 @@ ActiveRecord::Schema.define(version: 20170607010304) do
   add_foreign_key "property_conversations", "users"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users", column: "renter_id"
+  add_foreign_key "reviews", "properties"
+  add_foreign_key "reviews", "users"
 end

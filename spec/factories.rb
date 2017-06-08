@@ -1,10 +1,18 @@
+
 FactoryGirl.define do
+  factory :review do
+    property
+    user
+    rating 1
+    comment "MyText"
+  end
+
   factory :room_type do
     name 0
   end
 
   factory :user do
-    first_name Faker::User.name
+    first_name Faker::Cat.name
     last_name Faker::Music.instrument
     image_url Faker::Fillmurray.image
     sequence(:email) { |n| Faker::Internet.email("sample#{n}") }

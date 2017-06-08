@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-md-8">
     <h2><%= @property.name %></h2>
-    <p><%= "#{@property.city}, #{@property.state}" %></p><br>
+    <p><%= "#{@property.city}, #{@property.state}" %></p>
+    <% if @property.reviews %>
+      <h5 class="star-rating" data-score="<%= @property.average_rating %>">Average Rating: </h5>
+    <% end %>
     <p class="weather">
       <b>Current weather</b><br>
       <% if @weather.class == String %>

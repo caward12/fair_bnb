@@ -5,9 +5,10 @@ RSpec.describe ChatterConversation do
 
   before do
     user = create :user
+    con = ChatterConversation.new
 
     @chat_con_hash = {
-      :id=>104,
+      :id=>con.id,
       :first_message_date=>"2017-06-07T02:13:29.682Z",
       :last_message_date=>"2017-06-07T02:13:29.682Z",
       :messages=>[{
@@ -103,7 +104,7 @@ RSpec.describe ChatterConversation do
 
           expect(response).to be_a ChatterMessage
           expect(response.body).to eq params[:body]
-          expect(response.author).to be user
+          expect(response.user).to eq user
         end
       end
     end

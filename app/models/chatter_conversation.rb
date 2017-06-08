@@ -12,7 +12,8 @@ class ChatterConversation
   end
 
   def self.post_message(params)
-    service.post_message(params)
+    response = service.post_message(params)
+    ChatterMessage.new(response)
   end
 
 private

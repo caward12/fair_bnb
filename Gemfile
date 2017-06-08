@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.5'
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 gem 'figaro'
 gem 'faraday'
 gem 'omniauth-facebook'
@@ -23,6 +24,9 @@ gem 'omniauth-google-oauth2'
 gem 'simplecov', :require => false, :group => :test
 gem 'redis', '~> 3.0'
 gem 'geocoder'
+gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem "d3-rails"
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
@@ -43,6 +47,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'rspec-activemodel-mocks'
 end
 
 group :test do
