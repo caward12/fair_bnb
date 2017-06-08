@@ -121,7 +121,4 @@ class Seed
 end
 
 Seed.new
-<<<<<<< HEAD
-=======
 
->>>>>>> master
