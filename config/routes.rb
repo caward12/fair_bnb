@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
+
   root 'home#index'
 
   devise_for :users,
@@ -45,23 +48,27 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: [:index]
-    resources :properties, only: [:index, :edit, :update]
-    resources :users, only: [:index]
+    resources :properties, only: [:index, :edit, :update, :destroy]
+    resources :users, only: [:index, :update]
     resources :analytics, only: [:index]
     put '/analytics', to: 'analytics#update'
   end
 
+  resources :messages, only: [:create]
   resources :users, only: [:edit, :update, :show]
 
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+    get '/messages', to: 'conversations#show', as: :conversation
+    post '/messages', to: 'messages#create'
     resources :reviews, only: [:create]
   end
+
+  resources :conversations, only: [:index]
 
   resources :reservations, only: [:new]
 
   namespace :user do
-
     resources :properties, only: [:index] do
       resources :reservations, only: [:index, :update], controller: 'properties/reservations'
     end

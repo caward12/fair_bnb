@@ -9,7 +9,6 @@ require 'database_cleaner'
 require 'stub_helper'
 require 'support/login_helper'
 
-
 DatabaseCleaner.strategy = :truncation
 RSpec.configure do |c|
   c.before(:all) do
@@ -29,6 +28,7 @@ end
 
 VCR.configure do |config|
   config.configure_rspec_metadata!
+  config.default_cassette_options = { :record => :new_episodes}
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data('<FACEBOOK_KEY>') { ENV['FACEBOOK_KEY'] }

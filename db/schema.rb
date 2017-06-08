@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604194805) do
+ActiveRecord::Schema.define(version: 20170607010304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,14 @@ ActiveRecord::Schema.define(version: 20170604194805) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["property_id"], name: "index_property_availabilities_on_property_id", using: :btree
+  end
+
+  create_table "property_conversations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "property_id"
+    t.integer "cid"
+    t.index ["property_id"], name: "index_property_conversations_on_property_id", using: :btree
+    t.index ["user_id"], name: "index_property_conversations_on_user_id", using: :btree
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -128,6 +136,8 @@ ActiveRecord::Schema.define(version: 20170604194805) do
   add_foreign_key "properties", "room_types"
   add_foreign_key "properties", "users", column: "owner_id"
   add_foreign_key "property_availabilities", "properties"
+  add_foreign_key "property_conversations", "properties"
+  add_foreign_key "property_conversations", "users"
   add_foreign_key "reservations", "properties"
   add_foreign_key "reservations", "users", column: "renter_id"
   add_foreign_key "reviews", "properties"

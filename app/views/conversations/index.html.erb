@@ -1,0 +1,16 @@
+<h1>Your Messages</h1>
+<% unless @conversations.nil? || @conversations.empty?  %>
+<% @conversations.each do |convo| %>
+<h4>
+<% if current_user == convo.owner %>
+<%= link_to "Conversation with #{convo.guest.full_name}", property_conversation_path(convo.property) %>
+<% else %>
+<%= link_to "Conversation with #{convo.owner.full_name}", property_conversation_path(convo.property) %>
+<% end %>
+ about
+<%= link_to convo.property.name, property_path(convo.property) %>
+</h4>
+<% end %>
+<% else %>
+<h3>You haven't started any conversations yet!</h3>
+<% end %>

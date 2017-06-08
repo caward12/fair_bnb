@@ -3,12 +3,13 @@ class Property < ApplicationRecord
 
   validates :name, :number_of_guests, :number_of_beds, :number_of_rooms, :description, :price_per_night, presence: true
   validates :address, :city, :state, :zip, :image_url, :status, presence: true
-
+  scope :active_properties, -> { where(status: 1) }
+  scope :pending_properties, -> { where(status: 0) }
   belongs_to :room_type
   belongs_to :owner, class_name: "User", foreign_key: "owner_id"
-
   has_many :reservations
   has_many :property_availabilities
+  has_many :property_conversations
   has_many :reviews
 
   enum status: %w(pending active archived)
