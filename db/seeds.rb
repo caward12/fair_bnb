@@ -122,23 +122,3 @@ end
 
 Seed.new
 
-
-user.properties.create!(
-  name: "whatever",
-  number_of_guests:  2,
-  number_of_beds: 2,
-  number_of_rooms: 2,
-  number_of_bathrooms: 2,
-  description: "whatever",
-  price_per_night: Faker::Commerce.price,
-  address: "whatever",
-  city: "whatever",
-  state: "whatever",
-  zip: "whatever",
-  lat: "whatever",
-  long: "whatever",
-  image_url: "whatever",
-  room_type_id: 2,
-  check_in_time: "14:00:00",
-  check_out_time: "11:00:00"
-  )
