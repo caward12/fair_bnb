@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboard, only: [:index]
     resources :properties, only: [:index, :edit, :update, :destroy]
-    resources :users, only: [:index]
+    resources :users, only: [:index, :update]
     resources :analytics, only: [:index]
     put '/analytics', to: 'analytics#update'
   end

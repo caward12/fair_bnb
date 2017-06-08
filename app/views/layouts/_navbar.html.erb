@@ -50,6 +50,7 @@ $(document).ready(function() {
         <ul class="nav navbar-nav">
           <li><%= link_to 'Dashboard', dashboard_path %></li>
           <% if current_user.admin? %>
+
             <li> <%= link_to "Users", admin_users_path %></li>
             <li> <%= link_to "Properties", admin_properties_path %></li>
             <li> <%= link_to "Analytics", admin_analytics_path %></li>
