@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/549/messages
+    body:
+      encoding: UTF-8
+      string: author=1&body=Im+another+ChatterMessage+body&cid=549
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"12bb4076e129355583080484dd07d067"
+      X-Runtime:
+      - '0.014021'
+      X-Request-Id:
+      - b899a39c-7ccf-4c05-9c33-779174051bbd
+      Date:
+      - Thu, 08 Jun 2017 03:32:44 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"1","body":"Im another ChatterMessage body","timestamp":"2017-06-08T03:32:44.174Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:44 GMT
+- request:
+    method: get
+    uri: http://159.203.168.46/api/v1/conversations/549
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"7c5fbcef0af06822e634d7e1aa0a9acc"
+      X-Runtime:
+      - '0.011049'
+      X-Request-Id:
+      - 93b8bd97-f93f-4279-99ef-80b8f3375415
+      Date:
+      - Thu, 08 Jun 2017 03:32:44 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"id":549,"first_message_date":"2017-06-08T03:32:43.660Z","last_message_date":"2017-06-08T03:32:43.660Z","messages":[{"author":"1","body":"Im
+        another ChatterMessage body","timestamp":"2017-06-08T03:32:44.174Z"}]}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:44 GMT
+recorded_with: VCR 3.0.3

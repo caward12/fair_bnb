@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/546/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=546
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"492e7f7792bc7b952d6c34deb439ca05"
+      X-Runtime:
+      - '0.022442'
+      X-Request-Id:
+      - 98aebd31-bccb-4a6f-9867-fc52da985551
+      Date:
+      - Thu, 08 Jun 2017 03:32:32 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:32:32.605Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:32:32 GMT
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/562/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=562
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"70cc39bfe5a122ef3a5cfdb46915dc54"
+      X-Runtime:
+      - '0.012715'
+      X-Request-Id:
+      - 20e99667-4ca6-46e6-b2d8-c5a985072335
+      Date:
+      - Thu, 08 Jun 2017 03:34:47 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:34:47.447Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:34:47 GMT
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/576/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=576
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"fee4a84a42b9705d37798e89caca2564"
+      X-Runtime:
+      - '0.014544'
+      X-Request-Id:
+      - 35ff414a-b1fe-4a61-b4b9-9527577673e0
+      Date:
+      - Thu, 08 Jun 2017 03:39:13 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:39:13.805Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:39:13 GMT
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/590/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=590
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"816a077f374006bd5f9c0a3465c24be4"
+      X-Runtime:
+      - '0.015776'
+      X-Request-Id:
+      - 45ab2bbc-a1d0-41e6-a2c4-4ac10917c21e
+      Date:
+      - Thu, 08 Jun 2017 03:42:47 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T03:42:47.983Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 03:42:48 GMT
+- request:
+    method: post
+    uri: http://159.203.168.46/api/v1/conversations/635/messages
+    body:
+      encoding: UTF-8
+      string: author=11&body=YOLO&conversation_id=635
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Etag:
+      - W/"80a054c0c252a222c6320f25df804fe8"
+      X-Runtime:
+      - '0.012894'
+      X-Request-Id:
+      - 996e7d1f-359f-4393-8f85-a96f36c9d237
+      Date:
+      - Thu, 08 Jun 2017 04:43:25 GMT
+      X-Powered-By:
+      - Phusion Passenger 5.1.4
+      Server:
+      - nginx/1.10.3 + Phusion Passenger 5.1.4
+    body:
+      encoding: UTF-8
+      string: '{"author":"11","body":"YOLO","timestamp":"2017-06-08T04:43:25.606Z"}'
+    http_version: 
+  recorded_at: Thu, 08 Jun 2017 04:43:25 GMT
+recorded_with: VCR 3.0.3
