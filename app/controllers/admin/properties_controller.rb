@@ -6,12 +6,8 @@ class Admin::PropertiesController < Admin::BaseController
   end
 
   def update
-    @property = Property.find(params[:id])
-
-    if params[:status] == "active"
-      @property.update_attributes(status: :active)
-      @property.save
-    end
+    property = Property.find(params[:id])
+    property.update_attributes(status: 1) if params[:activate]
     redirect_to admin_properties_path
   end
 

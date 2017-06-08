@@ -13,11 +13,9 @@ RSpec.feature "as an admin " do
 
     expect(current_path).to eq(admin_properties_path)
 
-    within(".pending_properties") do
-      expect(page).to have_content(property.name)
-      expect(page).to have_selector(:link_or_button, 'Activate')
-    end
 
+    expect(page).to have_content(property.name)
+    expect(page).to have_selector(:link_or_button, 'Activate')
   end
 
   scenario "i can change the status of a pending property to active" do
@@ -27,17 +25,9 @@ RSpec.feature "as an admin " do
 
     visit admin_properties_path
 
-    within(".pending_properties") do
-      expect(page).to have_content(property.name)
+
       click_on "Activate"
-    end
-
-    within(".pending_properties") do
-      expect(page).to_not have_content(property.name)
-    end
-
-    within(".all_properties") do
-      expect(page).to have_content(property.name)
-    end
+      db_property = Property.last
+      expect(db_property.status).to eq("active")
   end
 end
