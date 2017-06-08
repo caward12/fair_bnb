@@ -1,16 +1,13 @@
 class Admin::PropertiesController < Admin::BaseController
 
   def index
-    @properties = Property.all()
+    @pending_properties = Property.pending_properties
+    @active_properties = Property.active_properties
   end
 
   def update
-    @property = Property.find(params[:id])
-
-    if params[:status] == "active"
-      @property.update_attributes(status: :active)
-      @property.save
-    end
+    property = Property.find(params[:id])
+    property.update_attributes(status: 1) if params[:activate]
     redirect_to admin_properties_path
   end
 

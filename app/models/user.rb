@@ -5,8 +5,9 @@ class User < ApplicationRecord
   has_many :reservations, foreign_key: "renter_id"
   has_many :properties, foreign_key: "owner_id"
   has_many :property_conversations
-  has_many :reviews
+  scope :active_users, -> { where(active?: true) }
 
+  has_many :reviews
   enum role: %w(registered_user admin)
 
   def full_name

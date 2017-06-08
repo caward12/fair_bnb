@@ -322,14 +322,20 @@ footer ul li {
 }
 
 .delete-button {
-  max-width: 65px;
+  max-width: 70px;
+  max-height: 20px;
 }
 
 .property-row {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.state {  
+
+.admin-table-width {
+  width: 200px !important;
+  float: left;
+}
+.state {
   fill: none;
   stroke: #a9a9a9;
   stroke-width: 1;
