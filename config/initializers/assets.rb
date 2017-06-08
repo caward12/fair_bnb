@@ -2,9 +2,7 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.precompile += %w( analytics.js )
-Rails.application.config.assets.precompile += %w( jquery.raty.js )
-Rails.application.config.assets.precompile += %w( ratings.js )
+Rails.application.config.assets.precompile += %w( ratings.js jquery.raty.js property_comparison.js reservations_month.js reservations_revenue.js uStates.js user_revenue.js city_revenue.js )
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path
 
