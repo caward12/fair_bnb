@@ -25,6 +25,7 @@ gem 'simplecov', :require => false, :group => :test
 gem 'geocoder'
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem "d3-rails"
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
