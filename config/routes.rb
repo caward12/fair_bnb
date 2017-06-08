@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 
   resources :properties,  only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :property_availabilities, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :reviews, only: [:create]
   end
 
   resources :reservations, only: [:new]

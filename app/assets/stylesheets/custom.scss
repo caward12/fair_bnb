@@ -366,4 +366,18 @@ footer ul li {
 }
 #tooltip tr td:nth-child(2){
   text-align:center;
+
+.review-picture {
+  height: 48px;
+  width: 48px;
+  border-radius: 25px;
+}
+
+.review-name {
+  display: inline-block;
+}
+
+.comment-text {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", "sans-serif"
+
 }
