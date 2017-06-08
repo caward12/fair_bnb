@@ -2,19 +2,20 @@ require 'rails_helper'
 
 RSpec.feature "as a guest, when i visit a property's detail page" do
   scenario "i can see the current weather in that location" do
-    VCR.use_cassette('guest_can_view_weather', record: :new_episodes) do
+    VCR.use_cassette('guest_can_view_weather') do
       property = create(:property, city: "New York", state: "NY")
       weather = property.get_weather
       visit property_path(property)
 
       within first(".weather") do
         expect(page).to have_content("Current weather")
-        expect(page).to have_content("Conditions: Overcast")
-        expect(page).to have_content("Temp: 57.9 F (14.4 C)")
+        expect(page).to have_content("Conditions: Clear")
+        expect(page).to have_content("61.5 F (16.4 C)")
         expect(page).to have_content("Wind: Calm")
       end
     end
   end
+
   scenario "i can see an error message when a property's city is invalid" do
     VCR.use_cassette('no_weather_for_invalid_cities', record: :new_episodes) do
       property = create(:property, city: "Macgyverville", state: "WY")

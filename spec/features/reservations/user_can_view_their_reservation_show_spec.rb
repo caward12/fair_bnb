@@ -11,6 +11,7 @@ feature "reservation show page" do
     @owner2 = @renter2.reservations.first.property.owner
     @owner2.update(password: "password")
   end
+
   scenario "guest cannot access a reservation show page" do
     visit user_reservation_path(renter1.reservations.first)
 
@@ -20,6 +21,7 @@ feature "reservation show page" do
       expect(page).to have_content("Page not found!")
     end
   end
+
   scenario "renter can navigate to a reservation show from index" do
     login(renter1)
 
@@ -31,13 +33,7 @@ feature "reservation show page" do
 
     expect(current_path).to eq(user_reservation_path(reservation))
   end
-  xscenario "owner can navigate to a reservation show from property reservations index" do
-      # to be built out later
-      # login(owner1)
-      # click_link "My Properties"
-      # click_link "Reservations"
-      # expect(current_path).to eq(user_reservation_path(reservation))
-  end
+
   scenario "renter can access a reservation show" do
     login(renter1)
 

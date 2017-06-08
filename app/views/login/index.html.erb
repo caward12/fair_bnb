@@ -7,17 +7,11 @@
       <h3><a class="btn btn-social-icon btn-facebook">
         <span class="fa fa-facebook"></span></a>  &nbsp;
         <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path, class: "social-media-link" %></h3>
-      </div>
-      <div class="text-left">
-        <h3><a class="btn btn-social-icon btn-google">
-          <span class="fa fa-google"></span></a> &nbsp;
-          <%= link_to "Log in with Google", user_google_oauth2_omniauth_authorize_path, class: "social-media-link" %></h3>
-      </div>
-
-      <div class="text-left">
-        <span class="glyphicon glyphicon-envelope"></span>
-        <h3><%= link_to "Log in with Email", new_user_session_path(:redirect_to => @redirect_path), class: "social-media-link"%></h3>
-        </div>
-      </div>
+    </div>
+    <div class="text-left">
+      <h3><a class="btn btn-social-icon btn-google">
+        <span class="fa fa-google"></span></a> &nbsp;
+        <%= link_to "Log in with Google", user_google_oauth2_omniauth_authorize_path, class: "social-media-link" %></h3>
     </div>
   </div>
+</div>

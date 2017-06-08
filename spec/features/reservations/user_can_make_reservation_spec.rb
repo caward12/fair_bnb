@@ -29,15 +29,8 @@ feature "request to book" do
         "Please log in or sign up to continue with your booking!"
       end
     end
-    xscenario "once logged in, i am redirected back to the reservation booking page" do
-      visit property_path(property)
-      make_reservation
-
-      login(user)
-
-      expect(current_path).to eq(property_path(property))
-    end
   end
+
   context "as a logged in user" do
     scenario "directed to booking page" do
       login(user)
