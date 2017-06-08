@@ -55,6 +55,9 @@ Then run `redis-server.`
 
 ##### Before pushing to heroku:
 
+run:
+'$ heroku addons:create heroku-redis:hobby-dev -a app_name'
+
 add to cable.yml file
  
 `production:`
