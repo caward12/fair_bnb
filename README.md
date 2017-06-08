@@ -41,14 +41,24 @@ The following api endpoints are available:
 `/api/v1/reservations/by_month` lists count of reservations by month. Can take a `city` param, that scopes to reservations by month for that city, default is for all reservations.
 
 
-**Sending email**
+#### **Sending email**
 
-Redis:
+##### Redis:
 
-`$ redis-server
+`$ redis-server`
 
 if you don’t already have redis, install it with homebrew:
 
-`$ brew update && brew install redis
+`$ brew update && brew install redis`
 
-Then run `redis-server.
+Then run `redis-server.`
+
+##### Before pushing to heroku:
+
+add to cable.yml file
+ 
+`production:`
+  `adapter: redis`
+  `url: redis://h:asdfqwer1234asdf@ec2-111-1-1-1.compute-1.amazonaws.com:111`
+
+  Article [Heroku Redis](https://devcenter.heroku.com/articles/heroku-redis)
