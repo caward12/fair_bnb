@@ -18,6 +18,7 @@ class Property < ApplicationRecord
     [address, city, state, zip].compact.join('+')
   end
 
+
   def two_digit_price
     '%.2f' % price_per_night.to_f
   end
@@ -80,10 +81,14 @@ class Property < ApplicationRecord
     where("number_of_guests >= ?", guests)
   end
 
+
+  def revenue
+    reservations.inject(0) {|total, reservation| total + reservation.total_price}.to_f
+  end
+
   def average_rating
     return 0 if reviews.blank?
     reviews.sum(:rating) / reviews.size
   end
-
 
 end
