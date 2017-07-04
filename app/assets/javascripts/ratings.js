@@ -8,9 +8,7 @@ $(document).ready(function(){
       }
     });
   }
-
   renderRaty();
-
     $('#star-rating').raty({
         path: '/assets',
         scoreName: 'review[rating]'
@@ -28,10 +26,6 @@ $("#new_review").submit(function() {
         for (var i = 0; i < 5; i++) {
           list[i].src = "/assets/star-off.png"
         }
-
-        // var num = document.querySelector('#reviews-count')
-        // num = +parseInt(num.textContent) + 1;
-
         var reviewTemplate = $('#review-template').html();
         var reviewHtml = Mustache.render(reviewTemplate, response);
         $(".all-reviews").append(reviewHtml);
@@ -41,7 +35,6 @@ $("#new_review").submit(function() {
       error: function(response){
         console.log(response);
       }
-
     });
     return false;
   });
