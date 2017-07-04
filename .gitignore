@@ -21,3 +21,5 @@
 .DS_Store
 #ignore coverage
 coverage
+#ignore compiled assets
+public/assets
