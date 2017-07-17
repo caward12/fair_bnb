@@ -2,7 +2,10 @@
 
 ![schema pic](app/assets/images/home.png?raw=true)
 
-View it live at: https://fair-bnb.herokuapp.com/
+View it live at: https://fair-b-n-b.herokuapp.com/
+
+Admin Analytics Dashboard build with Dimple.js and D3
+![analtics pic](app/assets/images/fairbnb_analytics.gif)
 
 ## Overview
 
